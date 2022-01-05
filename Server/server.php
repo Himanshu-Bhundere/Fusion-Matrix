@@ -3,7 +3,7 @@
     {
         const SERVER_NAME = 'localhost';
         const USER = 'root';
-        const PASS = 'admin';
+        //const PASS = 'admin';
         const DB_NAME = 'fusion_matrix';
 
         public $conn;
@@ -11,7 +11,7 @@
         //Establishes connection with mysql server and selects 'users' database
         function connect()
         {
-            $this->conn = new mysqli(self::SERVER_NAME, self::USER, self::PASS);
+	    $this->conn = new mysqli(self::SERVER_NAME, self::USER); //self::PASS);
             $this->conn->query("use ".self::DB_NAME);
         }
 
