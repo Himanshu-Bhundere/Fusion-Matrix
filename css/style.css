@@ -8410,6 +8410,19 @@ div.cs-select span {
   padding: 7em 0;
 }
 
+@media screen and (max-width: 768px){
+  #featured-hotel, #hotel-facilities{
+    padding: 1em 0;
+  }
+  .feature-full-2col{
+    margin-bottom: 0;
+  }
+  #tabs .tabs-nav > a {
+    width: 31%!important;
+    padding: 10px 0 40px 25px!important;
+  }
+}
+
 #hotel-facilities {
   float: left;
   width: 100%;
@@ -8871,7 +8884,8 @@ input[type="text"] {
 }
 @media screen and (max-width: 768px) {
   .section-title {
-    padding-top: 4em;
+    margin-bottom: 1em;
+    padding-top: 2em;
   }
 }
 .section-title h2 {
