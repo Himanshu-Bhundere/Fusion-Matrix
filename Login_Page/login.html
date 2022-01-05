@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 form {
@@ -67,24 +68,53 @@ img.avatar {
 </style>
 </head>
 <body>
-<form action="../Admin_Page/admin_page.html" method="post">
+<form id="loginForm">
   <div class="imgcontainer">
     <img src="img_avatar2.jpg" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
     <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <input type="text" placeholder="Enter Username" name="username" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="password" required>
         
-    <button type="submit">Login</button>
+    <button id="loginButton">Login</button>
   </div>
-
+  <div class="container" id="response">
+  </div>
   <div class="container">
     <a href="../index.html"><button type="button" class="cancelbtn" >Cancel</button></a>
   </div>
 </form>
+<script>
+	$(document).ready(function() {
+		$('#loginForm').submit(function () {
+			$("#loginButton").text("Logging in ...");
+			var values = $(this).serialize();
+			$.ajax({
+					url: "http://localhost/Fusion-Matrix/Server/login.php",
+					type: "post",
+					data: values,
+					success: function(response) {
+						console.log(response);
+						if(response === "1") //Login successful
+							window.location.href = 'http://localhost/Fusion-Matrix/Admin_Page/admin_page.html';
+						else
+						{
+							console.log("Invalid username/password");
+							//Login unsuccessful
+						}
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						console.log(textStatus, errorThrown);
+					}
+				});
+			$("#loginButton").text("Login");
+			return false; //Don't let html do anything if user submits form. We want jquery to do the work
+		});
+	});
+</script>
 </body>
 </html>
