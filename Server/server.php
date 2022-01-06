@@ -93,6 +93,19 @@
 				'success'=>true
 			);
 		}
+		function createRooms($n_floors,$n_rooms)
+		{
+			for($n=1;$n <= $n_floors; $n++)
+			{
+				for($m=1;$m <= $n_rooms; $m++)
+				{
+					$room_num = $n*100 + $m;
+					$query = $this->conn->prepare("INSERT into rooms(room_no) values(?);");
+					$query->bind_param("i",$room_num);
+					$query->execute();
+				}
+			}
+		}
 	
 		function is_user_logged() { return isset($_SESSION['username']); }
 		
