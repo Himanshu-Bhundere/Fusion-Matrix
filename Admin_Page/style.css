@@ -1,0 +1,27 @@
+nav h2{
+    text-align: center;
+    margin-top: 3%;
+}
+
+.row{
+    margin-top: 3%!important;
+}
+
+.card-widget{
+    display: flex;
+    padding: 1.5rem;
+    border-radius: 50rem;
+    background: #fff;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+    align-items: center;
+    justify-content: space-between;
+}
+
+h5{
+    font-size: 150%!important;
+}
+
+.icon img{
+    width: 19%;
+    float: right;
+}
