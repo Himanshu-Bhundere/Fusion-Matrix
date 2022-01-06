@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<?php 
+	session_start();
+?>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
@@ -92,25 +95,44 @@ img.avatar {
         
     <button id="loginButton">Login</button>
   </div>
-  <div class="container" id="response">
-  </div>
   <div class="container">
     <a href="../index.html"><button type="button" class="cancelbtn" >Cancel</button></a>
   </div>
 </form>
 <script>
+	function gotoAdmin() {
+		window.location.href = window.location.origin+"/Fusion-Matrix/Admin_Page/admin_page.php";
+	}
+	
 	$(document).ready(function() {
+		//If user has already logged in in the session, just send them to admin page
+		$.ajax({
+				url: window.location.origin+"/Fusion-Matrix/Server/login.php",
+				type: "post",
+				success: function(response) {
+					if(response === "1")
+					{
+						console.log("Already logged in");
+						gotoAdmin();
+					}
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(textStatus, errorThrown);
+				}
+		});
+		
+		
 		$('#loginForm').submit(function () {
 			$("#loginButton").text("Logging in ...");
 			var values = $(this).serialize();
 			$.ajax({
-					url: "http://localhost/Fusion-Matrix/Server/login.php",
+					url: window.location.origin+"/Fusion-Matrix/Server/login.php",
 					type: "post",
 					data: values,
 					success: function(response) {
 						console.log(response);
 						if(response === "1") //Login successful
-							window.location.href = 'http://localhost/Fusion-Matrix/Admin_Page/admin_page.html';
+							gotoAdmin();
 						else
 						{
 							//alert("Invalid username/password");
