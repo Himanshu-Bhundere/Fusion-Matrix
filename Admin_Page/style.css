@@ -1,6 +1,8 @@
 nav h2{
+    padding: 2% 0 2% 0;
     text-align: center;
-    margin-top: 3%;
+    vertical-align: middle;
+    box-shadow: 0 0.5rem 2rem rgb(0 0 0 / 23%);
 }
 
 .row{
@@ -22,6 +24,50 @@ h5{
 }
 
 .icon img{
-    width: 19%;
+    width: 60%;
     float: right;
+}
+
+.sidebar{
+    height: 100rem;
+    display: block;
+    padding: 3%;
+    margin: -3% 0 0 -8%;
+    float: left;
+    width: 16rem;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+}
+
+@media (max-width: 767px) {
+    .sidebar{
+        display: none;
+    }
+}
+
+ul{
+    list-style: none;
+    padding-left: 0!important;
+}
+
+li{
+    line-height: 3rem;
+}
+
+li img{
+    width: 16%;
+    margin-right: 16%;
+}
+
+.sidebar svg{
+    margin-right: 19%;
+}
+
+header{
+    margin-bottom: 0;
+    padding: 0 1.5rem 1.5rem 0;
+    color: #adb5bd;
+    font-size: .8875rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
 }
