@@ -71,3 +71,20 @@ header{
     text-transform: uppercase;
     letter-spacing: 0.2em;
 }
+
+.wrapper {
+    display: block;
+    margin: 6% 0 6% 32%;
+    border: 1px solid #555;
+    width: 50%;
+    position: relative;
+  }
+  p{text-align:center;}
+  .label {
+    height: 2em;
+    padding: .3em;
+    background: rgba(255, 255, 255, .8);
+    position: absolute;
+    display: none;
+    color:#333;
+  }
