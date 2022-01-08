@@ -9,6 +9,18 @@ nav h2{
     margin-top: 3%!important;
 }
 
+.tab{
+    flex: 0 0 auto;
+    width: 31%!important;
+    margin-bottom: 1.5rem!important;
+}
+
+.tab-1{
+    flex: 0 0 auto;
+    width: 38%!important;
+    margin-bottom: 1.5rem!important;
+}
+
 .card-widget{
     display: flex;
     padding: 1.5rem;
@@ -32,7 +44,7 @@ h5{
     height: 100rem;
     display: block;
     padding: 3%;
-    margin: -3% 0 0 -8%;
+    margin: -3% 0 0 -1%;
     float: left;
     width: 16rem;
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
