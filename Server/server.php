@@ -21,15 +21,15 @@
 			if($this->exists($username))
 				return false;
 			$hash = password_hash($password, PASSWORD_DEFAULT);
-            $query = $this->conn->prepare("INSERT INTO user_info(username, password) VALUES(?, ?);");
+            $query = $this->conn->prepare("INSERT INTO staff_credentials(username, password) VALUES(?, ?);");
             $query->bind_param("ss", $username, $hash);
             $query->execute();
 			return true;
         }
 		
-		function login($email, $password)
+		function login($username, $password)
 		{
-			$auth = $this->auth($email, $password);
+			$auth = $this->auth($username, $password);
 			if($auth['success'])
 			{
 				$_SESSION['username'] = $auth['username'];
@@ -39,46 +39,16 @@
 
         function exists($username)
         {
-            $query = $this->conn->prepare("SELECT * FROM user_info WHERE username=?");
+            $query = $this->conn->prepare("SELECT * FROM staff_credentials WHERE username=?");
             $query->bind_param("s", $username);
             $query->execute();
             $result = $query->get_result();
             return $result->num_rows > 0;
         }
-		
-        //This function should be called when user resets pin in his locker successfully
-        function update_id($email) //Generates the next iteration of verification id
-        {
-            $query = $this->conn->prepare("SELECT * FROM user_info WHERE email=?");
-            $query->bind_param("s", $email);
-            $query->execute();
-            $result = $query->get_result();
-
-            $old_id = $result->fetch_assoc()['verification_id'];
-            $id = $old_id;
-            for($i = 0; $i < 10_000; $i++)
-            {
-                //Get the first 4 digits of cube of the number
-                $id = substr(strval($id*$id*$id), 0, 4);
-            }
-
-            $query = $this->conn->prepare("UPDATE user_info SET verification_id=? WHERE email=?");
-            $query->bind_param("is", $id, $email);
-            $query->execute();
-            return "Verification id successfully updated to ".$id;
-        }
-		
-		function set_id($email, $verification_id)
-		{
-			$query = $this->conn->prepare("UPDATE user_info SET verification_id=? WHERE email=?");
-            $query->bind_param("is", $verification_id, $email);
-            $query->execute();
-            return "Verification id successfully updated to ".$verification_id;
-		}
 
 		function auth($username, $password)
 		{
-			$query = $this->conn->prepare("SELECT * FROM user_info WHERE username=?");
+			$query = $this->conn->prepare("SELECT * FROM staff_credentials WHERE username=?");
 			$query->bind_param("s", $username);
 			$query->execute();
 			$result = $query->get_result();
@@ -93,6 +63,7 @@
 				'success'=>true
 			);
 		}
+		
 		function createRooms($n_floors,$n_rooms)
 		{
 			for($n=1;$n <= $n_floors; $n++)
@@ -106,7 +77,41 @@
 				}
 			}
 		}
-	
+
+		function create_invoice($customer_id, $room_no, $days)
+		{
+			$room_details = $this->get_room_details($room_no);
+
+			$invoice_id = rand();
+			$room_type = $room_details['room_type'];
+			$issue_date = date("Y-m-d");
+			$issue_time = date("h:i:s");
+			$amount= $room_details['price'] * $days;
+			$details = "Number of days : {$days}";
+
+			echo "$invoice_id \t $room_type \t $issue_date \t $issue_time \t $amount \t $details";
+
+			$this->conn->query("INSERT INTO invoices(invoice_id, customer_id, room_no, room_type, issue_date, issue_time, amount, details) 
+								VALUES('{$invoice_id}', '{$customer_id}', '{$room_no}', '{$room_type}', '{$issue_date}', '{$issue_time}', '{$amount}', '{$details}');");
+		}
+
+		function get_invoice($invoice_id)
+		{
+			if(is_null($invoice_id))
+				return array();
+			$query = $this->conn->prepare("SELECT * FROM invoices WHERE invoice_id = ?");
+			$query->bind_param("s", $invoice_id);
+			$query->execute();
+			$result = $query->get_result();
+			return $result->fetch_assoc();
+		}
+
+		function get_room_details($room_no)
+		{
+			$result = $this->conn->query("SELECT * FROM rooms WHERE room_no = {$room_no}");
+			return $result->fetch_assoc();
+		}
+
 		function is_user_logged() { return isset($_SESSION['username']); }
 		
         //Closes connection with database

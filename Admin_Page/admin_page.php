@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
 </head>
 <body>
-<!-- Hello, <?php echo $_SESSION['username']?> -->
+<?php echo "Hello, " . $_SESSION['username']?>
 <nav>
     <h2>Admin Page</h2></nav>
     <div>
@@ -58,6 +59,7 @@
           <a href=""><li>Financial Charts/Graphs</li></a></ul>
 
           <li><img src="log out.png" alt="">Log out</li>
+
         </ul>
       </div>
     <section class="mb-3 mb-lg-5">
@@ -105,6 +107,7 @@
     </div>
 
     
+
     <script>
       let drop = ['.customer', '.staff', '.room', '.booking', '.ecommerce'];
       let dropSpan = ['.cus', '.sta', '.roo', '.boo', '.eco']
@@ -113,7 +116,13 @@
       document.querySelector(drop[i]).classList.toggle("show");
       document.querySelector(dropSpan[i]).classList.toggle("bi-caret-left");
     }
-      }
+    }
+    $(document).ready(function() {
+        //LOGOUT USER BY SENDING THEM TO logout.php
+        $("#logout-button").click(function() {
+            window.location.href=window.location.origin+"/Fusion-Matrix/Server/logout.php";
+        });
+    });
 
       // Area Chart Code
       const lineLabels = [
