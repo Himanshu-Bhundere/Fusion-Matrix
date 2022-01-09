@@ -171,7 +171,7 @@
 				$query->execute();
 			}
 		}
-		
+
 		function is_user_logged() { return isset($_SESSION['username']); }
 		
         //Closes connection with database

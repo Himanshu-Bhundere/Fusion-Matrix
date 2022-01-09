@@ -8,10 +8,10 @@
 	$server = new Server;
 	$server->connect();
 
-	$request_type = $_POST['request_type'] ?? NULL;
-
+	
 	$response = array();
 
+	$request_type = $_POST['request_type'];
 	switch($request_type)
 	{
 		case 'login':
