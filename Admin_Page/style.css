@@ -5,6 +5,24 @@ nav h2{
     box-shadow: 0 0.5rem 2rem rgb(0 0 0 / 23%);
 }
 
+a{
+    text-decoration: none!important;
+    color: black!important;
+}
+
+i{
+    float: right;
+    font-size: 1.3em;
+}
+
+.customer, .staff , .room, .ecommerce, .booking{
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
 .row{
     margin-top: 3%!important;
 }
@@ -66,37 +84,25 @@ li{
 }
 
 li img{
-    width: 16%;
-    margin-right: 16%;
+    width: 14%;
+    margin-right: 15%;
 }
 
 .sidebar svg{
-    margin-right: 19%;
+    margin-right: 15%;
 }
 
-header{
-    margin-bottom: 0;
-    padding: 0 1.5rem 1.5rem 0;
-    color: #adb5bd;
-    font-size: .8875rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
+.line-container{
+    width: 52%;
+    float: left;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+    margin-left: 10px;
 }
 
-.wrapper {
-    display: block;
-    margin: 6% 0 6% 32%;
-    border: 1px solid #555;
-    width: 50%;
-    position: relative;
-  }
-  p{text-align:center;}
-  .label {
-    height: 2em;
-    padding: .3em;
-    background: rgba(255, 255, 255, .8);
-    position: absolute;
-    display: none;
-    color:#333;
-  }
+.donut-container{
+    width: 26%;
+    float: right;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+    margin-left: 10px;
+    margin-right: 10px;
+}
