@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-<?php 
-	session_start();
-?>
+<?php session_start(); ?>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
@@ -99,15 +97,15 @@ img.avatar {
     <a href="../index.html"><button type="button" class="cancelbtn" >Cancel</button></a>
   </div>
 </form>
-<script>
+	<script>
 	function gotoAdmin() {
-		window.location.href = window.location.origin+"/Fusion-Matrix/Admin_Page/admin_page.php";
+		window.location.href = "../Admin_Page/admin_page.php";
 	}
 	
 	$(document).ready(function() {
 		//If user has already logged in in the session, just send them to admin page
 		$.ajax({
-				url: window.location.origin+"/Fusion-Matrix/Server/login.php",
+				url: "../Server/login.php",
 				type: "post",
 				success: function(response) {
 					if(response === "1")
@@ -126,7 +124,7 @@ img.avatar {
 			$("#loginButton").text("Logging in ...");
 			var values = $(this).serialize();
 			$.ajax({
-					url: window.location.origin+"/Fusion-Matrix/Server/login.php",
+					url: "../Server/login.php",
 					type: "post",
 					data: values,
 					success: function(response) {
@@ -147,6 +145,6 @@ img.avatar {
 			return false; //Don't let html do anything if user submits form. We want jquery to do the work
 		});
 	});
-</script>
+	</script>
 </body>
 </html>

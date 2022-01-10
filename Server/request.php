@@ -8,7 +8,7 @@
 	$server = new Server;
 	$server->connect();
 
-	$request_type = $_GET['request_type'] ?? NULL;
+	$request_type = $_POST['request_type'] ?? NULL;
 
 	$response = array();
 
@@ -30,8 +30,13 @@
 			}
 			break;
 
+		case 'logout':
+			session_destroy();
+			success();
+			detail("Logged out successfully");
+
 		case 'get_invoice':
-			$invoice_id = $_GET['invoice_id'] ?? NULL;
+			$invoice_id = $_POST['invoice_id'] ?? NULL;
 			$invoice_details = $server->get_invoice($invoice_id);
 			if(empty($invoice_details))
 			{
@@ -46,7 +51,28 @@
 			}
 			break;
 
+		case 'get_invoices':
+			$invoices_details = $server->get_invoices();
+			if(empty($invoices_details))
+			{
+				fail();
+				detail("There are no invoices in database");
+			}
+			else 
+			{
+				$response = array_merge($response, $invoices_details);
+				success();
+				detail("Invoices retreived successfully");
+			}
 
+		case 'create_invoice':
+			$customer_id = $_POST['customer_id'];
+			$room_no = $_POST['room_no'];
+			$days = $_POST['days'];
+			$invoice_id = $server->create_invoice($customer_id, $room_no, $days);
+			$response['invoice_id'] = $invoice_id;
+			success();
+			detail("Invoice created");
 
 		default:
 			fail();

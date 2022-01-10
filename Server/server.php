@@ -93,6 +93,7 @@
 
 			$this->conn->query("INSERT INTO invoices(invoice_id, customer_id, room_no, room_type, issue_date, issue_time, amount, details) 
 								VALUES('{$invoice_id}', '{$customer_id}', '{$room_no}', '{$room_type}', '{$issue_date}', '{$issue_time}', '{$amount}', '{$details}');");
+			return $invoice_id;
 		}
 
 		function get_invoice($invoice_id)
@@ -104,6 +105,12 @@
 			$query->execute();
 			$result = $query->get_result();
 			return $result->fetch_assoc();
+		}
+
+		function get_invoices()
+		{
+			$result = $this->conn->query("SELECT * FROM invoices");
+			return mysqli_fetch_all($result, MYSQLI_ASSOC);
 		}
 
 		function get_room_details($room_no)
