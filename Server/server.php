@@ -71,7 +71,7 @@
 				for($m=1;$m <= $n_rooms; $m++)
 				{
 					$room_num = $n*100 + $m;
-					$query = $this->conn->prepare("INSERT into rooms(room_no) values(?);");
+					$query = $this->conn->prepare("INSERT into rooms(room_no,occupancy) values(?,0);");
 					$query->bind_param("i",$room_num);
 					$query->execute();
 				}
@@ -125,7 +125,53 @@
 			$result = $this->conn->query("SELECT * FROM rooms WHERE room_no = {$room_no}");
 			return $result->fetch_assoc();
 		}
-
+		
+		function is_room_occupied($room_no)
+		{
+			$query = $this->conn->query("SELECT occupancy from rooms WHERE room_no={$room_no};");
+			$occupancy = $query->get_result()->fetch_array()[0];
+			return $occupancy;
+		}
+		
+		function registerCustomer($roomno, $cust_data)
+		{
+			if(is_room_occupied($roomno))
+			{
+				return 0;
+			}
+			$cust_id = "ID".rand();
+			$query = $this->conn->prepare("UPDATE rooms SET occupancy = 1,customer_id = ? where room_no = ?;");
+			$query->bind_param("si",$cust_id,$roomno);
+			$query->execute();
+			
+			$query = $this->conn->prepare("INSERT into customer_details(customer_id) values(?);");
+			$query->bind_param("s",$cust_id);
+			$query->execute();
+			foreach($cust_data as $field => $value)
+			{
+				$query = $this->conn->prepare("UPDATE customer_details SET {$field}=? where customer_id = ?;");
+				$query->bind_param("ss", $value, $cust_id);
+				$query->execute();
+			}
+			return 1;
+		}
+		
+		function registerStaff($staff_data)
+		{
+			$bytes = openssl_random_pseudo_bytes(32);
+			$staff_id = "ID".bin2hex($bytes);
+			$query = $this->conn->prepare("INSERT into staff_details(staff_id) values(?);");
+			$query->bind_param("s",$staff_id);
+			$query->execute();
+			
+			foreach($staff_data as $field => $value)
+			{
+				$query = $this->conn->prepare("UPDATE staff_details SET {$field}=? where staff_id = ?;");
+				$query->bind_param("ss",$value,$staff_id);
+				$query->execute();
+			}
+		}
+		
 		function is_user_logged() { return isset($_SESSION['username']); }
 		
         //Closes connection with database

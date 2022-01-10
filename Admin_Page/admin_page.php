@@ -16,9 +16,8 @@
     <script src = "../Server/request.js"> </script>
 </head>
 <body>
-<?php echo "Hello, " . $_SESSION['username']?>
 <nav>
-    <h2>Welcome, Admin!</h2>
+    <h2>Welcome, <?php echo $_SESSION['username']; ?> !</h2>
     <p id="date"></p>
   </nav>
     <div>
