@@ -49,7 +49,7 @@
 
           <a href="#" onclick="dropdown(3)"><li><img src="bill.png" alt="" style="margin-left: -2%;">Billing/Booking <i class="bi bi-caret-down boo"></i></li></a>
           <ul class="booking">
-          <a href=""><li>Customer Registration</li></a>
+          <a href="registration_form.php"><li>Customer Registration</li></a>
           <a href=""><li>Customer Invoice</li></a></ul>
 
           <a href="#" onclick="dropdown(4)"><li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
