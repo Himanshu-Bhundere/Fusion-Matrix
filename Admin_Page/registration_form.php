@@ -71,19 +71,15 @@
           </div>
           <div class="form-group right">
             <label for="phone" class="label-title">Phone</label>
-            <input type="text" id="phone" class="form-input" placeholder="999 999 9999" required="required">
+            <input type="text" id="phone" class="form-input" placeholder="XXX XXX XXXX" required="required">
           </div>
         </div>
 
         <!-- Id and Gender -->
         <div class="horizontal-group">
           <div class="form-group left">
-            <label class="label-title">Identity Proof</label>
-            <select class="form-input" id="level" >
-            <option value="aadhar">Aadhar Card</option>
-              <option value="M">Mountain View</option>
-              <option value="N">None</option>
-            </select>
+            <label for="aadharno" class="label-title">Aadhar Number</label>
+            <input type="text" id="aadharno" class="form-input" placeholder="XXXX XXXX XXXX" required="required">
           </div>
           <div class="form-group right">
             <label class="label-title">Gender</label>
@@ -98,7 +94,7 @@
         <!-- Proof and Age -->
         <div class="horizontal-group">
           <div class="form-group left">
-            <label for="choose-file" class="label-title">Upload Identity Proof</label>
+            <label for="choose-file" class="label-title">Upload Aadhar Card</label>
             <input type="file" id="choose-file" size="80" style="margin-top: 4%;">
           </div>
           <div class="form-group right">
@@ -139,7 +135,7 @@
         <!-- Bio -->
         <div class="form-group">
           <label for="choose-file" class="label-title">Special request or requirements</label>
-          <textarea class="form-input" rows="4" cols="50" style="height:auto"></textarea>
+          <textarea class="form-input" rows="4" cols="50" style="width: 97%; height: 195px;"></textarea>
         </div>
       </div>
 

@@ -61,12 +61,13 @@ body {
 
 .horizontal-group .left{
   float:left;
-  width:51%;
+  width:48%;
 }
 
 .horizontal-group .right{
   float:right;
-  width:49%;
+  width:48%;
+  margin-left: 2%;
 }
 
 .input-group{

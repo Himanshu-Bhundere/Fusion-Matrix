@@ -1,8 +1,13 @@
 nav h2{
     padding: 2% 0 2% 0;
-    text-align: center;
+    margin-left: 21%;
+    text-align: left;
     vertical-align: middle;
-    box-shadow: 0 0.5rem 2rem rgb(0 0 0 / 23%);
+}
+
+#date{
+    float: right;
+    margin: -5% 3% 0 0;
 }
 
 a{
@@ -17,6 +22,8 @@ i{
 
 .customer, .staff , .room, .ecommerce, .booking{
     display: none;
+    font-size: 0.8rem;
+    margin-left: 29%;
 }
 
 .show{
@@ -62,7 +69,7 @@ h5{
     height: 100rem;
     display: block;
     padding: 3%;
-    margin: -3% 0 0 -1%;
+    margin: -8% 0 0 -1%;
     float: left;
     width: 16rem;
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
