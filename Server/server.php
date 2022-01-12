@@ -87,10 +87,10 @@
 			$issue_date = date("Y-m-d");
 			$issue_time = date("h:i:s");
 			$amount= $room_details['price'] * $days;
-			$details = "Number of days : {$days}";
+			$details = "";
 
-			$this->conn->query("INSERT INTO invoices(invoice_id, customer_id, room_no, room_type, issue_date, issue_time, amount, details) 
-								VALUES('{$invoice_id}', '{$customer_id}', '{$room_no}', '{$room_type}', '{$issue_date}', '{$issue_time}', '{$amount}', '{$details}');");
+			$this->conn->query("INSERT INTO invoices(invoice_id, customer_id, room_no, room_type, issue_date, issue_time, amount, days, details) 
+								VALUES('{$invoice_id}', '{$customer_id}', '{$room_no}', '{$room_type}', '{$issue_date}', '{$issue_time}', '{$amount}', '{$days}', '{$details}');");
 			return $invoice_id;
 		}
 
@@ -108,6 +108,15 @@
 		function get_invoices()
 		{
 			$result = $this->conn->query("SELECT * FROM invoices");
+			return mysqli_fetch_all($result, MYSQLI_ASSOC);
+		}
+
+		function get_invoices_between($start_date, $end_date)
+		{
+			$query = $this->conn->prepare("SELECT * FROM invoices WHERE issue_date BETWEEN ? AND ?");
+			$query->bind_param("ss", $start_date, $end_date);
+			$query->execute();
+			$result = $query->get_result();
 			return mysqli_fetch_all($result, MYSQLI_ASSOC);
 		}
 

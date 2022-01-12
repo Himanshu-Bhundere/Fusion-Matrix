@@ -10,6 +10,18 @@ function getInvoices(func)
 	request(values, func);
 }
 
+function getInvoicesBetween(startDate, endDate, func)
+{
+	let values = {"request_type": "get_invoices_between", "start_date":startDate, "end_date":endDate};
+	request(values, func);
+}
+
+function register(username, password, func)
+{
+	let values = {"request_type": "register", "username":username, "password":password};
+	request(values, func);
+}
+
 function isLoggedIn(func)
 {
 	let values = {"request_type":"is_logged_in"};
@@ -41,12 +53,23 @@ function request(values, func)
 			type: "post",
 			data: values,
 			success: function(response) {
-				func(JSON.parse(response));
+				try
+				{
+					func(JSON.parse(response));
+				}
+				catch(err)
+				{
+					console.log("There was an error parsing the response : " + response);
+				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				console.log(textStatus, errorThrown);
 			}
 	});
+}
+
+log = function(data) {
+	console.log(data);
 }
 
 function objectifyForm(formArray) {

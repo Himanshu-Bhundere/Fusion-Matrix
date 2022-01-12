@@ -34,8 +34,26 @@
 
 		case 'logout':
 			session_destroy();
+			$response['value'] = 1;
 			success();
 			detail("Logged out successfully");
+			break;
+
+		case 'register':
+			$username = $_POST['username'] ?? NULL;
+			$password = $_POST['password'] ?? NULL;
+			if($server->register($username, $password))
+			{
+				$response['value'] = 1;
+				success();
+				detail("Account registered successfully");
+			}
+			else
+			{
+				$response['value'] = 0;
+				success();
+				detail("Username already in existence");
+			}
 			break;
 
 		case 'is_logged_in':
@@ -82,6 +100,7 @@
 				success();
 				detail("Invoices retreived successfully");
 			}
+			break;
 
 		case 'create_invoice':
 			$customer_id = $_POST['customer_id'];
@@ -91,6 +110,16 @@
 			$response['invoice_id'] = $invoice_id;
 			success();
 			detail("Invoice created");
+			break;
+
+		case 'get_invoices_between':
+			$start_date = $_POST['start_date'];
+			$end_date = $_POST['end_date'];
+			$invoices_details = $server->get_invoices_between($start_date, $end_date);
+			$response = array_merge($response, $invoices_details);
+			success();
+			detail("Invoices between given dates returned");
+			break;
 
 		default:
 			fail();
