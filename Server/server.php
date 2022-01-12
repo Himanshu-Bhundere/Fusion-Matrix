@@ -89,8 +89,6 @@
 			$amount= $room_details['price'] * $days;
 			$details = "Number of days : {$days}";
 
-			echo "$invoice_id \t $room_type \t $issue_date \t $issue_time \t $amount \t $details";
-
 			$this->conn->query("INSERT INTO invoices(invoice_id, customer_id, room_no, room_type, issue_date, issue_time, amount, details) 
 								VALUES('{$invoice_id}', '{$customer_id}', '{$room_no}', '{$room_type}', '{$issue_date}', '{$issue_time}', '{$amount}', '{$details}');");
 			return $invoice_id;

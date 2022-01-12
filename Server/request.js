@@ -10,9 +10,27 @@ function getInvoices(func)
 	request(values, func);
 }
 
+function isLoggedIn(func)
+{
+	let values = {"request_type":"is_logged_in"};
+	request(values, func);
+}
+
 function login(username, password, func)
 {
-	let values = {"username":username, "password":password};
+	let values = {"request_type":"login", "username":username, "password":password};
+	request(values, func);
+}
+
+function logout(func)
+{
+	let values = {"request_type":"logout"};
+	request(values, func);
+}
+
+function createInvoice(customer_id, room_no, days, func)
+{
+	let values = {"request_type":"create_invoice", "customer_id":customer_id, "room_no":room_no, "days":days};
 	request(values, func);
 }
 
@@ -29,4 +47,13 @@ function request(values, func)
 				console.log(textStatus, errorThrown);
 			}
 	});
+}
+
+function objectifyForm(formArray) {
+    //serialize data function
+    var returnArray = {};
+    for (var i = 0; i < formArray.length; i++){
+        returnArray[formArray[i]['name']] = formArray[i]['value'];
+    }
+    return returnArray;
 }

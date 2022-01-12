@@ -4,6 +4,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+<script src = "../Server/request.js"> </script>
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -102,49 +103,24 @@ img.avatar {
 		window.location.href = "../Admin_Page/admin_page.php";
 	}
 	
-	$(document).ready(function() {
-		//If user has already logged in in the session, just send them to admin page
-		$.ajax({
-				url: "../Server/login.php",
-				type: "post",
-				success: function(response) {
-					if(response === "1")
-					{
-						console.log("Already logged in");
-						gotoAdmin();
-					}
-				},
-				error: function(jqXHR, textStatus, errorThrown) {
-					console.log(textStatus, errorThrown);
-				}
-		});
+	isLoggedIn(function(data) {
+				if(data['value'] === 1)
+					gotoAdmin();
+			});
 		
 		
 		$('#loginForm').submit(function () {
-			$("#loginButton").text("Logging in ...");
-			var values = $(this).serialize();
-			$.ajax({
-					url: "../Server/login.php",
-					type: "post",
-					data: values,
-					success: function(response) {
-						console.log(response);
-						if(response === "1") //Login successful
-							gotoAdmin();
-						else
-						{
-							//alert("Invalid username/password");
-							//Login unsuccessful
-						}
-					},
-					error: function(jqXHR, textStatus, errorThrown) {
-						console.log(textStatus, errorThrown);
-					}
-				});
-			$("#loginButton").text("Login");
+            let formData = objectifyForm($(this).serializeArray());
+            login(formData['username'],
+                  formData['password'], 
+                  function(data) {
+                        if(data['value'])
+                            gotoAdmin();
+                        else
+                            console.log(data['details']);
+            });
 			return false; //Don't let html do anything if user submits form. We want jquery to do the work
 		});
-	});
 	</script>
 </body>
 </html>

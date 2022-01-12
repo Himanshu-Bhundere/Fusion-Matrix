@@ -20,12 +20,14 @@
 			$server->login($username, $password);
 			if(isset($_SESSION['username']))
 			{
+				$response['value'] = 1;
 				success();
 				detail("Logged in successfully");
 			}
 			else 
 			{
-				fail();
+				$response['value'] = 0;
+				success();
 				detail("Username or password invalid");
 			}
 			break;
@@ -34,6 +36,22 @@
 			session_destroy();
 			success();
 			detail("Logged out successfully");
+			break;
+
+		case 'is_logged_in':
+			if(isset($_SESSION['username']))
+			{
+				$response['value'] = 1;
+				success();
+				detail("Logged in.");
+			}
+			else 
+			{
+				$response['value'] = 0;
+				success();
+				detail("Not logged in.");
+			}
+			break;
 
 		case 'get_invoice':
 			$invoice_id = $_POST['invoice_id'] ?? NULL;
