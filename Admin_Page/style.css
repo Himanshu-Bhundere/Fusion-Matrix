@@ -1,6 +1,6 @@
 nav h2{
     padding: 2% 0 2% 0;
-    margin-left: 21%;
+    margin-left: 18rem;
     text-align: left;
     vertical-align: middle;
 }
@@ -68,10 +68,10 @@ h5{
 .sidebar{
     height: 100rem;
     display: block;
-    padding: 3%;
+    padding: 2%;
     margin: -8% 0 0 -1%;
     float: left;
-    width: 16rem;
+    width: 18rem;
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
 }
 
