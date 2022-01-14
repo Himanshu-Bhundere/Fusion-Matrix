@@ -2,5 +2,5 @@
 	require 'server.php'
 	$server = new Server;
 	$server->connect();
-	$server->registerStaff(array());
+	$server->register_staff(array());
 ?>

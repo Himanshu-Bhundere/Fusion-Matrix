@@ -1,3 +1,21 @@
+function registerCustomer(room_no, cust_data, func)
+{
+	let values = {"request_type":"register_customer", "room_no":room_no, "cust_data":cust_data};
+	request(values, func);
+}
+
+function registerStaff(staff_data, func)
+{
+	let values = {"request_type":"register_staff", "staff_data":staff_data};
+	request(values, func);
+}
+
+function isRoomOccupied(room_no, func)
+{
+	let values = {"request_type":"is_room_occupied", "room_no":room_no};
+	request(values, func);
+}
+
 function getInvoice(invoice_id, func)
 {
 	let values = {"request_type":"get_invoice", "invoice_id":invoice_id};

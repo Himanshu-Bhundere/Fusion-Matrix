@@ -71,7 +71,7 @@
 				for($m=1;$m <= $n_rooms; $m++)
 				{
 					$room_num = $n*100 + $m;
-					$query = $this->conn->prepare("INSERT into rooms(room_no,occupancy) values(?,0);");
+					$query = $this->conn->prepare("INSERT into rooms(room_no,occupancy, room_type) values(?,0, 'Regular');");
 					$query->bind_param("i",$room_num);
 					$query->execute();
 				}
@@ -122,20 +122,30 @@
 
 		function get_room_details($room_no)
 		{
-			$result = $this->conn->query("SELECT * FROM rooms WHERE room_no = {$room_no}");
-			return $result->fetch_assoc();
+			$result = $this->conn->query("SELECT * FROM rooms WHERE room_no = {$room_no};");
+			$room_details = $result->fetch_assoc();
+			$room_details['price'] = $this->conn->query("SELECT price FROM catalogue where room_type = {$room_type};");
+			return $room_details;
+		}
+		
+		function catalogue($catalogue_data)
+		{
+			foreach($catalogue_data as $room_type=>$price)
+			{
+				$this->conn->query("INSERT into catalogue values('{$room_type}',{$price});");
+			}
 		}
 		
 		function is_room_occupied($room_no)
 		{
-			$query = $this->conn->query("SELECT occupancy from rooms WHERE room_no={$room_no};");
-			$occupancy = $query->get_result()->fetch_array()[0];
+			$result = $this->conn->query("SELECT occupancy from rooms WHERE room_no={$room_no};");
+			$occupancy = $result->fetch_array()[0];
 			return $occupancy;
 		}
 		
-		function registerCustomer($roomno, $cust_data)
+		function register_customer($roomno, $cust_data)
 		{
-			if(is_room_occupied($roomno))
+			if($this->is_room_occupied($roomno))
 			{
 				return 0;
 			}
@@ -156,9 +166,9 @@
 			return 1;
 		}
 		
-		function registerStaff($staff_data)
+		function register_staff($staff_data)
 		{
-			$bytes = openssl_random_pseudo_bytes(32);
+			$bytes = openssl_random_pseudo_bytes(32/2);
 			$staff_id = "ID".bin2hex($bytes);
 			$query = $this->conn->prepare("INSERT into staff_details(staff_id) values(?);");
 			$query->bind_param("s",$staff_id);
@@ -170,6 +180,8 @@
 				$query->bind_param("ss",$value,$staff_id);
 				$query->execute();
 			}
+			
+			$this->register($staff_data['staff_type'], $staff_data['staff_type']);
 		}
 
 		function is_user_logged() { return isset($_SESSION['username']); }

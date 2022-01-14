@@ -120,7 +120,30 @@
 			success();
 			detail("Invoices between given dates returned");
 			break;
+			
+		case 'is_room_occupied':
+			$room_no = $_POST['room_no'];
+			$occupancy = $server->is_room_occupied($room_no);
+			$response['occupancy'] = $occupancy;
+			success();
+			detail("Room Occupancy Returned");
+			break;
 
+		case 'register_staff':
+			$staff_data = $_POST['staff_data'];
+			$server->register_staff($staff_data);
+			success();
+			detail("Staff Is Registered Successfully");
+			break;
+		
+		case 'register_customer':
+			$room_no = $_POST['room_no'];
+			$cust_data = $_POST['cust_data'];
+			$server->register_customer($room_no,$cust_data);
+			success();
+			detail("Customer Is Registered Successfully");
+			break;
+			
 		default:
 			fail();
 			detail("Unkown request");

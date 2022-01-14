@@ -3,5 +3,5 @@
 	$server = new Server;
 	$server->connect();
 	$roomno = $_GET['room_no'];
-	$server->registerCustomer($roomno, array("firstname" => "Aaryash", "lastname" => "18"));
+	$server->register_customer($roomno, array("firstname" => "Aaryash", "lastname" => "18"));
 ?>
