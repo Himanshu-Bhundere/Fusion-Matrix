@@ -124,7 +124,10 @@
 		{
 			$result = $this->conn->query("SELECT * FROM rooms WHERE room_no = {$room_no};");
 			$room_details = $result->fetch_assoc();
-			$room_details['price'] = $this->conn->query("SELECT price FROM catalogue where room_type = {$room_type};");
+			$query = $this->conn->prepare("SELECT price FROM catalogue WHERE room_type = ?");
+			$query->bind_param("s", $room_details['room_type']);
+			$query->execute();
+			$room_details['price'] = $query->get_result()->fetch_array()[0];
 			return $room_details;
 		}
 		
