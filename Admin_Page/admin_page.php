@@ -135,36 +135,46 @@
     });*/
 
     getInvoices(function(data) {
-                console.log(data);
+                    console.log(data);
+                    const lineLabels = []
+                    const amounts = []
+                    for(i = 0; ; i++)
+                    {
+                        if(i in data)
+                        {
+                            lineLabels.push(data[i]['issue_date']);
+                            amounts.push(data[i]['amount']);
+                        }
+                        else
+                            break;
+                    }
+
+                    console.log(lineLabels);
+                    
+                    const lineData = {
+                        labels: lineLabels,
+                        datasets: [{
+                        label: 'My First Dataset',
+                        data: amounts,
+                        backgroundColor: 'blue',
+                        fill: true,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                    };
+                    const line = {
+                        type: 'line',
+                        data: lineData,
+                        options: {}
+                        };
+                        const lineChart = new Chart(
+                    document.getElementById('line'),
+                    line
+                    );
                });
 
       // Area Chart Code
-      const lineLabels = [
-        'January',
-        'February',
-        'March',
-      ];
       
-      const lineData = {
-      labels: lineLabels,
-      datasets: [{
-      label: 'My First Dataset',
-      data: [65, 59, 80],
-      backgroundColor: 'blue',
-      fill: true,
-      borderColor: 'rgb(75, 192, 192)',
-      tension: 0.1
-    }]
-  };
-  const line = {
-        type: 'line',
-        data: lineData,
-        options: {}
-      };
-      const lineChart = new Chart(
-    document.getElementById('line'),
-    line
-  );
 
       //Donut Chart Code
       const donutLabels = [

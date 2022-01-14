@@ -77,7 +77,10 @@ function request(values, func)
 				}
 				catch(err)
 				{
-					console.log("There was an error parsing the response : " + response);
+					if(err.name == "SyntaxError")
+						console.log("There was an error parsing the response : " + response);
+					else
+						throw err;
 				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
