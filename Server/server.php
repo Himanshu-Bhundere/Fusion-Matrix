@@ -124,8 +124,8 @@
 		
 		function get_invoices_of_month($month, $year)
 		{
-			$result = $this->conn->query("SELECT * FROM invoices WHERE MONTH(issue_date) = {$month} AND YEAR = {$year};");
-			return mysqli_fetch_all($result,MYSQlI_ASSOC);
+			$result = $this->conn->query("SELECT * FROM invoices WHERE MONTH(issue_date) = {$month} AND YEAR(issue_date) = {$year};");
+			return mysqli_fetch_all($result, MYSQLI_ASSOC);
 		}
 
 		function get_room_details($room_no)

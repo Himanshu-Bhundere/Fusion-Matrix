@@ -151,9 +151,9 @@
                     const lineData = {
                         labels: lineLabels,
                         datasets: [{
-                        label: 'My First Dataset',
+                        label: 'Revenue Dataset',
                         data: amounts,
-                        backgroundColor: 'blue',
+                        backgroundColor: '#fa871b',
                         fill: true,
                         borderColor: 'rgb(75, 192, 192)',
                         tension: 0.1

@@ -46,7 +46,7 @@ function getInvoicesBetween(startDate, endDate, func)
 	request(values, func);
 }
 
-function getInvoiceOfMonth(month, year, func)
+function getInvoicesOfMonth(month, year, func)
 {
 	let values = {"request_type":"get_invoices_of_month", "month":month, "year":year};
 	request(values, func);
