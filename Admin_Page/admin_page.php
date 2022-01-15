@@ -138,19 +138,16 @@
                     console.log(data);
                     const lineLabels = []
                     const amounts = []
-                    for(i = 0; ; i++)
+                    for(i in months)
                     {
-                        if(i in data)
-                        {
-                            lineLabels.push(data[i]['issue_date']);
-                            amounts.push(data[i]['amount']);
-                        }
-                        else
-                            break;
+                        lineLabels.push(months[i]);
+                        let sum = 0
+                        let invoices = getInvoicesOfMonth(i+1, y);
+                        for(invoice of invoices)
+                            sum += invoices['amount'];
+                        amounts.push(sum)
                     }
 
-                    console.log(lineLabels);
-                    
                     const lineData = {
                         labels: lineLabels,
                         datasets: [{

@@ -16,13 +16,13 @@
         }
 
         //Add username and password to database
-        function register($username, $password)
+        function register($username, $password, $staff_type)
         {
 			if($this->exists($username))
 				return false;
 			$hash = password_hash($password, PASSWORD_DEFAULT);
-            $query = $this->conn->prepare("INSERT INTO staff_credentials(username, password) VALUES(?, ?);");
-            $query->bind_param("ss", $username, $hash);
+            $query = $this->conn->prepare("INSERT INTO staff_credentials(username, password, staff_type) VALUES(?, ?, ?);");
+            $query->bind_param("sss", $username, $hash, $staff_type);
             $query->execute();
 			return true;
         }
@@ -33,6 +33,7 @@
 			if($auth['success'])
 			{
 				$_SESSION['username'] = $auth['username'];
+				$_SESSION['staff_type'] = $auth['staff_type'];
 				return true;
 			}
 		}
@@ -60,6 +61,7 @@
 				return Array('success'=>false);
 			return Array(
 				'username'=>$values['username'],
+				'staff_type'=>$values['staff_type'],
 				'success'=>true
 			);
 		}
@@ -184,7 +186,7 @@
 				$query->execute();
 			}
 			
-			$this->register($staff_data['staff_type'], $staff_data['staff_type']);
+			$this->register($staff_data['username'], $staff_data['staff_type'], $staff_data['staff_type']);
 		}
 
 		function is_user_logged() { return isset($_SESSION['username']); }

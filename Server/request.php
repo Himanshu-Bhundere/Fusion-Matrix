@@ -40,6 +40,7 @@
 			break;
 
 		case 'register':
+			requirePermission('admin');
 			$username = $_POST['username'] ?? NULL;
 			$password = $_POST['password'] ?? NULL;
 			if($server->register($username, $password))
@@ -72,6 +73,7 @@
 			break;
 
 		case 'get_invoice':
+			requirePermission('receptionist');
 			$invoice_id = $_POST['invoice_id'] ?? NULL;
 			$invoice_details = $server->get_invoice($invoice_id);
 			if(empty($invoice_details))
@@ -88,6 +90,7 @@
 			break;
 
 		case 'get_invoices':
+			requirePermission('admin');
 			$invoices_details = $server->get_invoices();
 			if(empty($invoices_details))
 			{
@@ -103,6 +106,7 @@
 			break;
 
 		case 'create_invoice':
+			requirePermission('admin');
 			$customer_id = $_POST['customer_id'];
 			$room_no = $_POST['room_no'];
 			$days = $_POST['days'];
@@ -113,6 +117,7 @@
 			break;
 
 		case 'get_invoices_between':
+			requirePermission('receptionist');
 			$start_date = $_POST['start_date'];
 			$end_date = $_POST['end_date'];
 			$invoices_details = $server->get_invoices_between($start_date, $end_date);
@@ -122,6 +127,7 @@
 			break;
 			
 		case 'is_room_occupied':
+			requirePermission('receptionist');
 			$room_no = $_POST['room_no'];
 			$occupancy = $server->is_room_occupied($room_no);
 			$response['occupancy'] = $occupancy;
@@ -130,6 +136,7 @@
 			break;
 
 		case 'register_staff':
+			requirePermission('admin');
 			$staff_data = $_POST['staff_data'];
 			$server->register_staff($staff_data);
 			success();
@@ -137,6 +144,7 @@
 			break;
 		
 		case 'register_customer':
+			requirePermission('receptionist');
 			$room_no = $_POST['room_no'];
 			$cust_data = $_POST['cust_data'];
 			$server->register_customer($room_no,$cust_data);
@@ -147,6 +155,35 @@
 		default:
 			fail();
 			detail("Unkown request");
+	}
+
+	function requirePermission($required_staff_type)
+	{
+		if(!hasPermission($required_staff_type))
+		{
+			fail();
+			detail("Request denied. Insufficient permission.");
+		}
+	}
+
+	function hasPermission($required_staff_type)
+	{
+		if(!isset($_SESSION['staff_type']))
+			return false;
+		$current_staff = $_SESSION['staff_type'];
+		switch($required_staff_type) //Returns true if $staff_type > $required_staff_type
+		{
+			//Basically, if $required_staff_type is staff for eg, then the switch case jumps to case 'staff'. 
+			//From that point, due to case fallthrough, we will check all the staff types above staff, and if they match, we return true.
+			//So if current staff is receptionist and they need admin permission, switch case jumps directly to case 'admin', and we don't check any other staff type, so we return false
+			case 'staff':
+				if($current_staff == 'staff') return true;
+			case 'receptionist':
+				if($current_staff == 'receptionist') return true;
+			case 'admin':
+				if($current_staff == 'admin') return true;
+		}
+		return false; //If above switch case doesn't return, it means staff doesn't have permission
 	}
 
 	function detail($msg)
