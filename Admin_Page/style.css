@@ -1,14 +1,44 @@
-nav h2{
-    padding: 2% 0 2% 0;
-    margin-left: 18rem;
-    text-align: left;
-    vertical-align: middle;
-}
-
 #date{
     float: right;
-    margin: -5% 3% 0 0;
+    margin: 3% 3% 0 0;
 }
+
+@media (max-width: 767px) {
+    #date{
+        margin-top: 24%;
+        font-size: 3vw!important;
+    }
+    .icon{
+        padding: 4%!important;
+    }
+    .mb-0{
+        font-size: 7vw!important;
+    }
+}
+
+@media only screen and (max-width:850px) and (min-width:650px){
+    .mb-0{
+        font-size: 2vw!important;
+    }
+    .icon img{
+        width: 18%!important;
+        margin: 11% 10% 0 0!important;
+    }
+}
+
+@media only screen and (max-width:1250px) and (min-width:850px){
+    .icon img{
+        width: 16%!important;
+        margin: 10% 12% 0 0!important;
+    }
+}
+
+@media (min-width:850px){
+    .icon{
+        max-height: 50%;
+    }
+}
+
 
 a{
     text-decoration: none!important;
@@ -34,35 +64,20 @@ i{
     margin-top: 3%!important;
 }
 
-.tab{
-    flex: 0 0 auto;
-    width: 31%!important;
-    margin-bottom: 1.5rem!important;
-}
-
-.tab-1{
-    flex: 0 0 auto;
-    width: 38%!important;
-    margin-bottom: 1.5rem!important;
-}
-
-.card-widget{
-    display: flex;
-    padding: 1.5rem;
-    border-radius: 50rem;
-    background: #fff;
-    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
-    align-items: center;
-    justify-content: space-between;
-}
-
 h5{
     font-size: 150%!important;
 }
 
+.icon{
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+    margin-top: 1%!important;
+    padding: 2%;
+}
+
 .icon img{
-    width: 60%;
+    width: 10%;
     float: right;
+    margin: 2% 5% 0 0;
 }
 
 .sidebar{
@@ -71,7 +86,7 @@ h5{
     padding: 2%;
     margin: -8% 0 0 -1%;
     float: left;
-    width: 18rem;
+    width: 17.4rem;
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
 }
 

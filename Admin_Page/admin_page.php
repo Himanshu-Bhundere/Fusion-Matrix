@@ -17,10 +17,18 @@
 </head>
 <body>
 <?php echo "Hello, " . $_SESSION['username']?>
-<nav>
-    <h2>Welcome, Admin!</h2>
-    <p id="date"></p>
-  </nav>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-1 col-md-4 col-lg-3 col-xl-2">
+    </div>
+    <div class="col-10 col-sm-12 col-md-4 col-lg-6 col-xl-8">
+      <h2 style="width: max-content;">Welcome, Admin!</h2>
+    </div>
+    <div class="col-2 col-sm-12 col-md-4 col-lg-3 col-xl-2">
+      <p id="date" style="font-size: 1.5vw; width: max-content;"></p>
+    </div>
+  </div>
+</div>
     <div>
       <div class="sidebar">
         <header style="color: #adb5bd;">Menu</header>
@@ -42,8 +50,8 @@
             <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
           </svg>Staff <i class="bi bi-caret-down sta"></i></li></a>
           <ul class="staff">
-          <a href=""><li>Staff Registration</li></a>
-          <a href=""><li>Staff Removal</li></a>
+          <a href="Staff_Page/Add.php"><li>Staff Registration</li></a>
+          <a href="Staff_Page/Remove.html"><li>Staff Removal</li></a>
           <a href=""><li>Information/Records</li></a></ul>
 
           <a href="#" onclick="dropdown(2)"><li><img src="room.jpg" alt="">Room <i class="bi bi-caret-down roo"></i></li></a>
@@ -51,7 +59,7 @@
 
           <a href="#" onclick="dropdown(3)"><li><img src="bill.png" alt="" style="margin-left: -2%;">Billing/Booking <i class="bi bi-caret-down boo"></i></li></a>
           <ul class="booking">
-          <a href="registration_form.php"><li>Customer Registration</li></a>
+          <a href="Booking_Page/registration_form.php"><li>Customer Registration</li></a>
           <a href=""><li>Customer Invoice</li></a>
           <a href=""><li>Booking Cancellation</li></a></ul>
 
@@ -66,51 +74,37 @@
 
         </ul>
       </div>
-    <section class="mb-3 mb-lg-5">
-        <div class="row">
-          <div class="tab">
-            <div class="card-widget h-100">
-              <div class="card-widget-body">
-                <div class="dot me-3"></div>
-                <div class="text">
-                  <h5 class="mb-0" style="width:max-content;">Rooms Avaliable</h5><span class="text-gray-500">100</span>
-                </div>
-              </div>
-               <div class="icon "><img src="room.jpeg" alt=""></div> 
-            </div>
-          </div>
-          <div class="tab-1">
-            <div class="card-widget h-100">
-              <div class="card-widget-body">
-                <div class="dot me-3 bg-green"></div>
-                <div class="text">
-                  <h5 class="mb-0" style="width:max-content;">Currently Checked-In</h5><span class="text-gray-500">10</span>
-                </div>
-              </div>
-              <div class="icon text-white bg-green"><img src="Heart.png" alt=""></div>
-            </div>
-          </div>
-          <div class="tab">
-            <div class="card-widget h-100">
-              <div class="card-widget-body">
-                <div class="dot me-3 bg-blue"></div>
-                <div class="text">
-                  <h5 class="mb-0" style="width: max-content;">Customer Visited</h5><span class="text-gray-500">400</span>
-                </div>
-              </div>
-              <div class="icon"><img src="happy.png" alt=""></div>
-            </div>
-      </section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 icon rounded-pill">
+          <img src="room.jpeg" alt="">
+          <h5 class="mb-0" style="width:max-content;">Rooms Avaliable</h5><span class="text-gray-500">100</span>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 icon rounded-pill">
+          <img src="room.jpeg" alt="">
+          <h5 class="mb-0" style="width:max-content;">Currently Checked-In</h5><span class="text-gray-500">10</span>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 icon rounded-pill">
+          <img src="room.jpeg" alt="">
+          <h5 class="mb-0" style="width:max-content;">Customer Visited</h5><span class="text-gray-500">10</span>
+        </div>
+      </div>
     </div>
 
-    <div class="line-container">
+    <!-- <div class="line-container">
       <canvas id="line"></canvas>
     </div>
     <div class="donut-container">
       <canvas id="donut"></canvas>
-    </div>
+    </div> -->
 
-    
+    <!-- <div class="line-container">
+      <canvas id="line"></canvas>
+    </div>
+    <div class="donut-container">
+      <canvas id="donut"></canvas>
+    </div> -->
+
 
     <script>
       const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
