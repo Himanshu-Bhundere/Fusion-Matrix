@@ -126,6 +126,15 @@
 			detail("Invoices between given dates returned");
 			break;
 			
+		case 'get_invoices_of_month':
+			$month = $_POST['month'];
+			$year = $_POST['year'];
+			$invoice_details = $server->get_invoices_of_month($month, $year);
+			$response = array_merge($response, $invoice_details);
+			success();
+			detail("Invoices of given month returned");
+			break;
+			
 		case 'is_room_occupied':
 			requirePermission('receptionist');
 			$room_no = $_POST['room_no'];
@@ -150,6 +159,20 @@
 			$server->register_customer($room_no,$cust_data);
 			success();
 			detail("Customer Is Registered Successfully");
+			break;
+			
+		case 'customer_information':
+			$customer_id = $_POST['customer_information'];
+			$server->customer_information($customer_id);
+			success();
+			detail("Customer Information returned");
+			break;
+		
+		case 'staff_information':
+			$staff_id = $_POST['staff_information'];
+			$server->staff_information($staff_id);
+			success();
+			detail("Staff Information returned");
 			break;
 			
 		default:

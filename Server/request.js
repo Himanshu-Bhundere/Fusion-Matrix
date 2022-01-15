@@ -10,6 +10,18 @@ function registerStaff(staff_data, func)
 	request(values, func);
 }
 
+function customerInformation($customer_id, func)
+{
+	let values = {"request_type":"customer_information", "customer_id":customer_information};
+	request(values, func);
+}
+
+function staffInformation($staff_id, func)
+{
+	let values = {"request_type":"Staff_information", "staff_id":staff_id};
+	request(values, func);
+}
+
 function isRoomOccupied(room_no, func)
 {
 	let values = {"request_type":"is_room_occupied", "room_no":room_no};
@@ -31,6 +43,12 @@ function getInvoices(func)
 function getInvoicesBetween(startDate, endDate, func)
 {
 	let values = {"request_type": "get_invoices_between", "start_date":startDate, "end_date":endDate};
+	request(values, func);
+}
+
+function getInvoiceOfMonth(month, year, func)
+{
+	let values = {"request_type":"get_invoices_of_month", "month":month, "year":year};
 	request(values, func);
 }
 

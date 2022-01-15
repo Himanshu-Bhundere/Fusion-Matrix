@@ -121,6 +121,12 @@
 			$result = $query->get_result();
 			return mysqli_fetch_all($result, MYSQLI_ASSOC);
 		}
+		
+		function get_invoices_of_month($month, $year)
+		{
+			$result = $this->conn->query("SELECT * FROM invoices WHERE MONTH(issue_date) = {$month} AND YEAR = {$year};");
+			return mysqli_fetch_all($result,MYSQlI_ASSOC);
+		}
 
 		function get_room_details($room_no)
 		{
@@ -187,6 +193,18 @@
 			}
 			
 			$this->register($staff_data['username'], $staff_data['staff_type'], $staff_data['staff_type']);
+		}
+		
+		function customer_information($customer_id)
+		{
+			$result = $this->conn->query("SELECT * FROM customer_details where customer_id = {$customer_id};");
+			return $result;
+		}
+
+		function staff_information($staff_id)
+		{
+			$result = $this->conn->query("SELECT * FROM staff_details where staff_id = {$staff_id};");
+			return $result;
 		}
 
 		function is_user_logged() { return isset($_SESSION['username']); }
