@@ -103,22 +103,23 @@ img.avatar {
 		window.location.href = "../Admin_Page/admin_page.php";
 	}
 	
-	isLoggedIn(function(data) {
-				if(data['value'] === 1)
-					gotoAdmin();
-			});
+	isLoggedIn().then(function(data) {
+            if(data['value'])
+            {
+                console.log("Already logged in.");
+                gotoAdmin();
+            }
+        });
 		
 		
 		$('#loginForm').submit(function () {
             let formData = objectifyForm($(this).serializeArray());
-            login(formData['username'],
-                  formData['password'], 
-                  function(data) {
-                        if(data['value'])
-                            gotoAdmin();
-                        else
-                            console.log(data['details']);
-            });
+            login(formData['username'], formData['password']).then(function(data) {
+                                                                    if(data['value'])
+                                                                        gotoAdmin();
+                                                                    else
+                                                                        console.log(data['details']);
+                                                              });
 			return false; //Don't let html do anything if user submits form. We want jquery to do the work
 		});
 	</script>

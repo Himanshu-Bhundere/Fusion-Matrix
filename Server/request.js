@@ -1,109 +1,111 @@
-function registerCustomer(room_no, cust_data, func)
+function registerCustomer(room_no, cust_data)
 {
 	let values = {"request_type":"register_customer", "room_no":room_no, "cust_data":cust_data};
-	request(values, func);
+	return request(values);
 }
 
-function registerStaff(staff_data, func)
+function registerStaff(staff_data)
 {
 	let values = {"request_type":"register_staff", "staff_data":staff_data};
-	request(values, func);
+	return request(values);
 }
 
-function customerInformation($customer_id, func)
+function customerInformation(customer_id)
 {
 	let values = {"request_type":"customer_information", "customer_id":customer_information};
-	request(values, func);
+	return request(values);
 }
 
-function staffInformation($staff_id, func)
+function staffInformation(staff_id)
 {
 	let values = {"request_type":"Staff_information", "staff_id":staff_id};
-	request(values, func);
+	return request(values);
 }
 
-function isRoomOccupied(room_no, func)
+function isRoomOccupied(room_no)
 {
 	let values = {"request_type":"is_room_occupied", "room_no":room_no};
-	request(values, func);
+	return request(values);
 }
 
-function getInvoice(invoice_id, func)
+function getInvoice(invoice_id)
 {
 	let values = {"request_type":"get_invoice", "invoice_id":invoice_id};
-	request(values, func);
+	return request(values);
 }
 
 function getInvoices(func)
 {
 	let values = {"request_type":"get_invoices"};
-	request(values, func);
+	return request(values);
 }
 
-function getInvoicesBetween(startDate, endDate, func)
+function getInvoicesBetween(startDate, endDate)
 {
 	let values = {"request_type": "get_invoices_between", "start_date":startDate, "end_date":endDate};
-	request(values, func);
+	return request(values);
 }
 
-function getInvoicesOfMonth(month, year, func)
+async function getInvoicesOfMonth(month, year)
 {
 	let values = {"request_type":"get_invoices_of_month", "month":month, "year":year};
-	request(values, func);
+	return request(values);
 }
 
-function register(username, password, func)
+function register(username, password)
 {
 	let values = {"request_type": "register", "username":username, "password":password};
-	request(values, func);
+	return request(values);
 }
 
-function isLoggedIn(func)
+function isLoggedIn()
 {
 	let values = {"request_type":"is_logged_in"};
-	request(values, func);
+	return request(values);
 }
 
-function login(username, password, func)
+function login(username, password)
 {
 	let values = {"request_type":"login", "username":username, "password":password};
-	request(values, func);
+	return request(values);
 }
 
-function logout(func)
+function logout()
 {
 	let values = {"request_type":"logout"};
-	request(values, func);
+	return request(values);
 }
 
-function createInvoice(customer_id, room_no, days, func)
+function createInvoice(customer_id, room_no, days)
 {
 	let values = {"request_type":"create_invoice", "customer_id":customer_id, "room_no":room_no, "days":days};
-	request(values, func);
+	return request(values);
 }
 
-function request(values, func)
+async function request(values)
 {
-	$.ajax({
-			url: "../Server/request.php",
-			type: "post",
-			data: values,
-			success: function(response) {
-				try
-				{
-					func(JSON.parse(response));
+	return new Promise((resolve, reject) => {
+		$.ajax({
+				url: "../Server/request.php",
+				type: "post",
+				data: values,
+				success: function(response) {
+					try
+					{
+						resolve(JSON.parse(response));
+					}
+					catch(err)
+					{
+						if(err.name == "SyntaxError")
+							reject("There was an error parsing the response : " + response);
+						else
+							reject(err);
+					}
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(textStatus, errorThrown);
 				}
-				catch(err)
-				{
-					if(err.name == "SyntaxError")
-						console.log("There was an error parsing the response : " + response);
-					else
-						throw err;
-				}
-			},
-			error: function(jqXHR, textStatus, errorThrown) {
-				console.log(textStatus, errorThrown);
-			}
+		});
 	});
 }
 

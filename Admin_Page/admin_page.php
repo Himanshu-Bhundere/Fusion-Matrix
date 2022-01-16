@@ -61,7 +61,7 @@
           <a href=""><li>Cash Inflow/Outflow</li></a>
           <a href=""><li>Financial Charts</li></a></ul>
 
-          <li><img src="log out.png" alt="">Log out</li>
+          <li><img src="log out.png" onclick="logout().then(log)"alt="">Log out</li>
 
         </ul>
       </div>
@@ -126,6 +126,7 @@
       document.querySelector(dropSpan[i]).classList.toggle("bi-caret-left");
     }
     }
+
     /*$(document).ready(function() {
         //LOGOUT USER
         $("#logout-button").click(function() {
@@ -134,44 +135,41 @@
         });
     });*/
 
-    getInvoices(function(data) {
-                    console.log(data);
-                    const lineLabels = []
-                    const amounts = []
-                    for(i in months)
-                    {
-                        lineLabels.push(months[i]);
-                        let sum = 0
-                        let invoices = getInvoicesOfMonth(i+1, y);
-                        for(invoice of invoices)
-                            sum += invoices['amount'];
-                        amounts.push(sum)
-                    }
-
-                    const lineData = {
-                        labels: lineLabels,
-                        datasets: [{
-                        label: 'Revenue Dataset',
-                        data: amounts,
-                        backgroundColor: '#fa871b',
-                        fill: true,
-                        borderColor: 'rgb(75, 192, 192)',
-                        tension: 0.1
-                    }]
-                    };
-                    const line = {
-                        type: 'line',
-                        data: lineData,
-                        options: {}
-                        };
-                        const lineChart = new Chart(
-                    document.getElementById('line'),
-                    line
-                    );
-               });
-
-      // Area Chart Code
-      
+    // Area Chart Code
+    (async() => {
+        let lineLabels = []
+        let amounts = new Array(12);
+        for(let i = 0; i < 12; i++)
+        {
+            lineLabels.push(months[i]);
+            await getInvoicesOfMonth(Number(i)+1, y).then((invoices) => {
+                let sum = 0;
+                for(let i = 0; ; i++)
+                    if(i in invoices)
+                        sum += Number(invoices[i]['amount']);
+                    else
+                        break;
+                amounts[i] = sum;
+            });
+        }
+        const lineData = {
+            labels: lineLabels,
+            datasets: [{
+            label: 'Revenue Dataset',
+            data: amounts,
+            backgroundColor: '#fa871b',
+            fill: true,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+            }]
+            };
+            const line = {
+                type: 'line',
+                data: lineData,
+                options: {}
+                };
+        lineChart = new Chart(document.getElementById('line'), line);
+     })();
 
       //Donut Chart Code
       const donutLabels = [

@@ -33,6 +33,12 @@
 			break;
 
 		case 'logout':
+			if(!isset($_SESSION['username']))
+			{
+				$response['value'] = 0;
+				fail();
+				detail("Already logged out.");
+			}
 			session_destroy();
 			$response['value'] = 1;
 			success();
@@ -127,6 +133,7 @@
 			break;
 			
 		case 'get_invoices_of_month':
+			requirePermission('admin');
 			$month = $_POST['month'];
 			$year = $_POST['year'];
 			$invoice_details = $server->get_invoices_of_month($month, $year);
