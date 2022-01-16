@@ -69,7 +69,7 @@
           <a href=""><li>Cash Inflow/Outflow</li></a>
           <a href=""><li>Financial Charts</li></a></ul>
 
-          <a href=""><li><img src="log out.png" alt="">Log out</li></a>
+          <a href=""><li><img src="log out.png" onclick="logout().then(log)" alt="">Log out</li></a>
         </ul>
       </div>
       <div>
@@ -117,7 +117,7 @@
               <a href=""><li>Cash Inflow/Outflow</li></a>
               <a href=""><li>Financial Charts</li></a></ul>
     
-              <a href=""><li><img src="log out.png" alt="">Log out</li></a>
+              <a href=""><li><img src="log out.png" onclick="logout().then(log)" alt="">Log out</li></a>
             </ul>
           </div>
         </div>
