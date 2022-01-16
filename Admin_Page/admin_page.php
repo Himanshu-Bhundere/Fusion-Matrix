@@ -15,13 +15,12 @@
     <script src = "../Server/request.js"> </script>
 </head>
 <body>
-<?php echo "Hello, " . $_SESSION['username']?>
 <div class="container">
   <div class="row">
     <div class="col-12 col-sm-1 col-md-4 col-lg-3 col-xl-2">
     </div>
     <div class="col-10 col-sm-12 col-md-4 col-lg-6 col-xl-8">
-      <h2 style="width: max-content;">Welcome, Admin!</h2>
+      <h2 style="width: max-content;">Welcome, <?php echo $_SESSION['username']; ?>!</h2>
     </div>
     <div class="col-2 col-sm-12 col-md-4 col-lg-3 col-xl-2">
       <p id="date" style="font-size: 1.5vw; width: max-content;"></p>
@@ -122,6 +121,7 @@
       document.querySelector(dropSpan[i]).classList.toggle("bi-caret-left");
     }
     }
+
     /*$(document).ready(function() {
         //LOGOUT USER
         $("#logout-button").click(function() {
@@ -130,37 +130,41 @@
         });
     });*/
 
-    getInvoices(function(data) {
-                console.log(data);
-               });
-
-      // Area Chart Code
-      const lineLabels = [
-        'January',
-        'February',
-        'March',
-      ];
-      
-      const lineData = {
-      labels: lineLabels,
-      datasets: [{
-      label: 'My First Dataset',
-      data: [65, 59, 80],
-      backgroundColor: 'blue',
-      fill: true,
-      borderColor: 'rgb(75, 192, 192)',
-      tension: 0.1
-    }]
-  };
-  const line = {
-        type: 'line',
-        data: lineData,
-        options: {}
-      };
-      const lineChart = new Chart(
-    document.getElementById('line'),
-    line
-  );
+    // Area Chart Code
+    (async() => {
+        let lineLabels = []
+        let amounts = new Array(12);
+        for(let i = 0; i < 12; i++)
+        {
+            lineLabels.push(months[i]);
+            await getInvoicesOfMonth(Number(i)+1, y).then((invoices) => {
+                let sum = 0;
+                for(let i = 0; ; i++)
+                    if(i in invoices)
+                        sum += Number(invoices[i]['amount']);
+                    else
+                        break;
+                amounts[i] = sum;
+            });
+        }
+        const lineData = {
+            labels: lineLabels,
+            datasets: [{
+            label: 'Revenue Dataset',
+            data: amounts,
+            backgroundColor: '#fa871b',
+            fill: true,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+            }]
+            };
+            const line = {
+                type: 'line',
+                data: lineData,
+                options: {}
+                };
+        lineChart = new Chart(document.getElementById('line'), line);
+     })();
 
       //Donut Chart Code
       const donutLabels = [
