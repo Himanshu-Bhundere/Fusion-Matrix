@@ -161,17 +161,26 @@ a img{
     opacity: 0.8;
 }
 
-.line-container{
-    width: 52%;
-    float: left;
+.icon{
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
-    margin-left: 10px;
+    margin-top: 1%!important;
+    padding: 2%;
 }
 
-.donut-container{
-    width: 26%;
-    float: right;
-    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
-    margin-left: 10px;
-    margin-right: 10px;
+.icon h5{
+    display: inline;
+}
+
+.icon img{
+    width: 10%;
+    float: left;
+    margin: 2% 5% 0 0;
+}
+
+.adjust{
+    margin-left: 13%;
+}
+
+.employee svg{
+    margin: 0 4% 0 4%;
 }
