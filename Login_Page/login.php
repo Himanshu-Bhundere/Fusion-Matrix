@@ -111,9 +111,10 @@ img.avatar {
             }
         });
 		
-		
+	$(document).ready(function() {
 		$('#loginForm').submit(function () {
             let formData = objectifyForm($(this).serializeArray());
+            console.log(formData);
             login(formData['username'], formData['password']).then(function(data) {
                                                                     if(data['value'])
                                                                         gotoAdmin();
@@ -122,6 +123,7 @@ img.avatar {
                                                               });
 			return false; //Don't let html do anything if user submits form. We want jquery to do the work
 		});
+    });
 	</script>
 </body>
 </html>

@@ -1,9 +1,12 @@
 <!DOCTYPE html>
+<?php session_start(); ?>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Add Employee Form</title>
     <link rel="stylesheet" href="Add.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    <script src = "http://localhost/Fusion-Matrix/Server/request.js"> </script>
   </head>
   <style>
     .avatar {
@@ -17,9 +20,7 @@
     }
     </style>
   <body>
-    <form class="signup-form" action="/register" method="post">
-
-
+    <form class="signup-form" id="signup-form">
       <div class="form-header">
         <h1>Add Employee</h1>
       </div>
@@ -37,11 +38,11 @@
     <div class="form-body">
           <div class="form-group left">
             <label for="firstname" class="label-title">First name </label>
-            <input type="text" id="firstname" class="form-input" placeholder="enter your first name" required="required">
+            <input type="text" id="firstname" class="form-input" name="s_firstname" placeholder="enter your first name" required="required">
           </div>
           <div class="form-group right">
             <label for="lastname" class="label-title">Last name</label>
-            <input type="text" id="lastname" class="form-input" placeholder="enter your last name">
+            <input type="text" id="lastname" class="form-input" name="s_lastname" placeholder="enter your last name">
           </div>  
         <div class="form-group left ">
           <label for="email" class="label-title">Personal Email</label>
@@ -63,8 +64,8 @@
           <div class="form-group left">
             <label class="label-title">Gender</label>
             <div class="input-group">
-              <label for="male"><input type="radio" name="gender" value="male" id="male"> Male</label>
-              <label for="female"><input type="radio" name="gender" value="female" id="female"> Female</label>
+              <label for="male"><input type="radio" name="s_gender" value="male" id="male"> Male</label>
+              <label for="female"><input type="radio" name="s_gender" value="female" id="female"> Female</label>
             </div>
           </div>
           <div class="form-group right">
@@ -168,13 +169,14 @@
 
     <!-- Script for range input label -->
     <script>
-      var rangeLabel = document.getElementById("range-label");
-      var experience = document.getElementById("experience");
-
-      function change() {
-      rangeLabel.innerText = experience.value + "K";
-      }
+       $(document).ready(function() {
+            $('#signup-form').submit(function() {
+                console.log("test");
+                let formData = objectifyForm($(this).serializeArray());
+                registerStaff(formData).then(log);                
+                return false; //Don't let html do anything if user submits form. We want jquery to do the work
+            });
+        });
     </script>
-
   </body>
 </html>
