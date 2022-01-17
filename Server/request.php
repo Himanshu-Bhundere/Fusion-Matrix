@@ -169,19 +169,40 @@
 			break;
 			
 		case 'customer_information':
-			$customer_id = $_POST['customer_information'];
-			$server->customer_information($customer_id);
-			success();
-			detail("Customer Information returned");
+			requirePermission('receptionist');
+			$customer_id = $_POST['customer_id'];
+			$customer_information = $server->customer_information($customer_id);
+			if($customer_information != false) {
+				$response['customer_information'] = $customer_information;
+				success();
+				detail("Customer Information returned");
+			}
+			else {
+				fail();
+				detail("Customer not found");
+			}
 			break;
 		
 		case 'staff_information':
-			$staff_id = $_POST['staff_information'];
-			$server->staff_information($staff_id);
-			success();
-			detail("Staff Information returned");
+			requirePermission('admin');
+			$staff_id = $_POST['staff_id'];
+			$staff_information = $server->staff_information($staff_id);
+			if($staff_information != false) {
+				$response['staff_information'] = $staff_information;
+				success();
+				detail("Staff Information returned");
+			}
+			else {
+				fail();
+				detail("Staff not found");
+			}
 			break;
-			
+
+		case 'get_all_staff_information':
+			$response['staff_information'] = $server->get_all_staff_information();
+			success();
+			detail("All staff information returned");
+			break;
 		default:
 			fail();
 			detail("Unkown request");
