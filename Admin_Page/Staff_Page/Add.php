@@ -33,7 +33,7 @@
             <center>
                 <br>
           <label for="choose-file" class="label-title">Upload Profile Picture<br><br></label>
-          <input type="file" id="choose-file" size="80">
+          <input type="file" name="s_profile_img" id="choose-file" size="80">
         </center>
     <div class="form-body">
           <div class="form-group left">
@@ -46,12 +46,12 @@
           </div>  
         <div class="form-group left ">
           <label for="email" class="label-title">Personal Email</label>
-          <input type="email" id="email" class="form-input" placeholder="enter your email" required="required">
+          <input type="email" id="email" class="form-input" name="s_email_id" placeholder="enter your email" required="required">
         </div>
 
         <div class="form-group right">
             <label for="dob" class="label-title">Date Of Birth</label>
-            <input type="dob" id="dob" class="form-input" placeholder="enter your Date Of Birth" required="required" style="width: ;">
+            <input type="dob" id="dob" class="form-input" name="s_date_of_birth" placeholder="enter your Date Of Birth" required="required" style="width: ;">
         </div>
           <div class="form-group left">
             <label for="password" class="label-title">LinkedIn Profile </label>
@@ -71,11 +71,11 @@
           <div class="form-group right">
             <label class="label-title">Department</label>
             <div >
-              <select class="form-input" id="level">
-                <option value="D">Design</option>
-                <option value="M">Marketing</option>
-                <option value="C">Quality Assurance</option>
-                <option value="De">Development</option></select>
+              <select class="form-input" name = "s_department" id="level">
+                <option value="Design">Design</option>
+                <option value="Markketing">Marketing</option>
+                <option value="Quality">Quality Assurance</option>
+                <option value="Development">Development</option></select>
               <br>
             </div>
           </div>
@@ -88,25 +88,25 @@
             </div>
             <div class="form-group right">
                 <label for="Designation" class="label-title">Designation</label>
-                <input type="text" class="form-input" id="last name" placeholder="Designation" required="required">
+                <input type="text" class="form-input" name="staff_type" id="last name" placeholder="Designation" required="required">
               </div>
             <div class="form-group left">
               <label for="text" class="label-title">Address Line 1 </label>
-              <input type="text" id="Firstname" class="form-input" placeholder="Address" required=" required">
+              <input type="text" name="s_address" id="Firstname" class="form-input" placeholder="Address" required=" required">
             </div>
             <div class="form-group right">
               <label for="Description" class="label-title">Address Line 2</label>
-              <input type="text" class="form-input" id="last name" placeholder="Address" required=" not required">
+              <input type="text" name="s_address" class="form-input" id="last name" placeholder="Address" required=" not required">
             </div>
             
             <div class="form-group left">
                 <label for="Description" class="label-title">State</label>
-                <input type="text" class="form-input" id="last name" placeholder="Address" required="  required">
+                <input type="text" name="s_address" class="form-input" id="last name" placeholder="Address" required="  required">
             </div>
       
             <div class="form-group right">
                 <label for="Description" class="label-title">PIN Code</label>
-                <input type="text" class="form-input" id="last name" placeholder="Address" required=" not required">
+                <input type="text" name="s_address" class="form-input" id="last name" placeholder="Address" required=" not required">
             </div>
             <div class="form-group  left">
               <label for="text" class="label-title">Education</label>
@@ -125,35 +125,35 @@
               </div>
           <div class="form-group right">
             <label for="experience" class="label-title">Age</label>
-            <input type="number" min="18" max="80"  value="18" class="form-input">
+            <input type="number" name="s_age" min="18" max="80"  value="18" class="form-input">
           </div>
           <div class="form-group left">
             <label for="firstname" class="label-title">Organization </label>
-            <input type="text" id="firstname" class="form-input" placeholder="Latest Organization  name" required="required" />
+            <input type="text" name="s_organisation" id="firstname" class="form-input" placeholder="Latest Organization  name" required="required" />
           </div>
           <div class="form-group right">
             <label for="lastname" class="label-title">Designation</label>
-            <input type="text" id="lastname" class="form-input" placeholder="Designation" />
+            <input type="text" name="staff_type" id="lastname" class="form-input" placeholder="Designation" />
           </div>
           <div class="form-group left">
             <label for="firstname" class="label-title">Start Date</label>
-            <input type="text" id="firstname" class="form-input" placeholder="Starting Date of working" required="required" />
+            <input type="text" name="s_start_date" id="firstname" class="form-input" placeholder="Starting Date of working" required="required" />
           </div>
           <div class="form-group right">
             <label for="lastname" class="label-title">End Date</label>
-            <input type="text" id="lastname" class="form-input" placeholder="Last Date of working" />
+            <input type="text" name="s_end_date" id="lastname" class="form-input" placeholder="Last Date of working" />
           </div>
               <div class="form-group left">
                 <label for="firstname" class="label-title">Starting Salary</label>
-                <input type="text" id="firstname" class="form-input" placeholder="Enter start salary" required="required" />
+                <input type="text" name="s_start_salary" id="firstname" class="form-input" placeholder="Enter start salary" required="required" />
               </div>
               <div class="form-group right">
                 <label for="lastname" class="label-title">End Salary</label>
-                <input type="text" id="lastname" class="form-input" placeholder="Enter last salary" />
+                <input type="text" name="s_end_salary" id="lastname" class="form-input" placeholder="Enter last salary" />
               </div>
                   <div class="form-group">
                     <label for="firstname" class="label-title">Reason</label>
-                    <input type="text" id="firstname" class="form-input" placeholder="Enter Leaving Reason" required="required" />
+                    <input type="text" name = "s_reason" id="firstname" class="form-input" placeholder="Enter Leaving Reason" required="required" />
                   </div>
 
         <div class="form-group" style="clear: both;">
@@ -171,9 +171,9 @@
     <script>
        $(document).ready(function() {
             $('#signup-form').submit(function() {
-                console.log("test");
                 let formData = objectifyForm($(this).serializeArray());
-                registerStaff(formData).then(log);                
+                registerStaff(formData).then(log);   
+				console.log(formData);
                 return false; //Don't let html do anything if user submits form. We want jquery to do the work
             });
         });
