@@ -33,7 +33,7 @@
       <div id="sidebar">
         <header style="color: #adb5bd;">Menu</header>
         <ul>
-          <a href="admin_page.php"><li class="opacity"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+          <a href="/Fusion-Matrix/Admin_Page/admin_page.php"><li class="opacity"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
             <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
           </svg>Home</li></a>
@@ -49,16 +49,16 @@
             <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
           </svg>Staff</li><i class="bi bi-caret-down sta"></i></a>
           <ul class="staff">
-          <a href="Staff_Page/Add.php"><li>Staff Registration</li></a>
-          <a href="Staff_Page/Remove.php"><li>Staff Removal</li></a>
-          <a href="Staff_Page/Info.php"><li>Information/Records</li></a></ul>
+          <a href="/Fusion-Matrix/Admin_Page/Staff_Page/Add.php"><li>Staff Registration</li></a>
+          <a href="/Fusion-Matrix/Admin_Page/Staff_Page/Remove.php"><li>Staff Removal</li></a>
+          <a href="/Fusion-Matrix/Admin_Page/Staff_Page/Info.php"><li>Information/Records</li></a></ul>
 
           <a href="#" onclick="dropdown(2)"><li><img src="room.jpg" alt="">Room</li><i class="bi bi-caret-down roo"></i></a>
           <a href="" class="room"><li>Avaliablility</li></a>
 
           <a href="#" onclick="dropdown(3)"><li><img src="bill.png" alt="" style="margin-left: -2%;">Billing/Booking</li><i class="bi bi-caret-down boo"></i></a>
           <ul class="booking">
-          <a href="Booking_Page/registration_form.php"><li>Customer Registration</li></a>
+          <a href="/Fusion-Matrix/Admin_Page/Booking_Page/registration_form.php"><li>Customer Registration</li></a>
           <a href=""><li>Customer Invoice</li></a>
           <a href=""><li>Booking Cancellation</li></a></ul>
 
@@ -97,16 +97,16 @@
                 <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
               </svg>Staff</li><i class="bi bi-caret-down sta"></i></a>
               <ul class="staff">
-              <a href="Staff_Page/Add.php"><li>Staff Registration</li></a>
-              <a href="Staff_Page/Remove.php"><li>Staff Removal</li></a>
-              <a href="Staff_Page/Info.html"><li>Information/Records</li></a></ul>
+              <a href="/Fusion-Matrix/Admin_Page/Staff_Page/Add.php"><li>Staff Registration</li></a>
+              <a href="/Fusion-Matrix/Admin_Page/Staff_Page/Remove.php"><li>Staff Removal</li></a>
+              <a href="/Fusion-Matrix/Admin_Page/Staff_Page/Info.html"><li>Information/Records</li></a></ul>
     
               <a href="#" onclick="dropdown(2)"><li><img src="room.jpg" alt="">Room</li><i class="bi bi-caret-down roo"></i></a>
               <a href="" class="room"><li>Avaliablility</li></a>
     
               <a href="#" onclick="dropdown(3)"><li><img src="bill.png" alt="" style="margin-left: -2%;">Billing/Booking</li><i class="bi bi-caret-down boo"></i></a>
               <ul class="booking">
-              <a href="Booking_Page/registration_form.php"><li>Customer Registration</li></a>
+              <a href="/Fusion-Matrix/Admin_Page/Booking_Page/registration_form.php"><li>Customer Registration</li></a>
               <a href=""><li>Customer Invoice</li></a>
               <a href=""><li>Booking Cancellation</li></a></ul>
     
