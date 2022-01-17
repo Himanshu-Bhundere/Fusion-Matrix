@@ -68,6 +68,10 @@ img.avatar {
   padding: 0 16px 0 16px;
 }
 
+#loginButton:hover, .cancelbtn:hover{
+  background-color: green;
+}
+
 @media screen and (max-width: 767px) {
   .cancelbtn {
      width: 100%;
