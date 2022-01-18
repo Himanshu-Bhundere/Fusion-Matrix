@@ -8,7 +8,6 @@
 	$server = new Server;
 	$server->connect();
 
-	
 	$response = array();
 
 	$request_type = $_POST['request_type'];
@@ -24,7 +23,7 @@
 				success();
 				detail("Logged in successfully");
 			}
-			else 
+			else
 			{
 				$response['value'] = 0;
 				success();
@@ -154,7 +153,11 @@
 		case 'register_staff':
 			requirePermission('admin');
 			$staff_data = $_POST['staff_data'];
-			$server->register_staff($staff_data);
+			if(!$server->register_staff($staff_data))
+			{
+				fail();
+				detail("Staff was not reigstered");
+			}
 			success();
 			detail("Staff Is Registered Successfully");
 			break;
@@ -163,7 +166,11 @@
 			requirePermission('receptionist');
 			$room_no = $_POST['room_no'];
 			$cust_data = $_POST['cust_data'];
-			$server->register_customer($room_no,$cust_data);
+			if(!$server->register_customer($room_no,$cust_data))
+			{
+				fail();
+				detail("Customer was not reigstered");
+			}
 			success();
 			detail("Customer Is Registered Successfully");
 			break;

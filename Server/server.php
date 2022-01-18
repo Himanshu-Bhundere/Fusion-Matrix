@@ -16,13 +16,13 @@
         }
 
         //Add username and password to database
-        function register($username, $password, $staff_type)
+        function register($staff_id, $username, $password)
         {
 			if($this->exists($username))
 				return false;
 			$hash = password_hash($password, PASSWORD_DEFAULT);
-            $query = $this->conn->prepare("INSERT INTO staff_credentials(username, password, staff_type) VALUES(?, ?, ?);");
-            $query->bind_param("sss", $username, $hash, $staff_type);
+            $query = $this->conn->prepare("INSERT INTO staff_credentials(staff_id, username, password) VALUES(?, ?, ?);");
+            $query->bind_param("sss", $staff_id, $username, $hash);
             $query->execute();
 			return true;
         }
@@ -56,12 +56,17 @@
 			$values = $result->fetch_assoc();
 			if($result->num_rows == 0)
 				return Array('success'=>false);
-			
 			if(!password_verify($password, $values['password']))
 				return Array('success'=>false);
+
+			$query = $this->conn->prepare("SELECT staff_type FROM staff_details WHERE staff_id=?");
+			$query->bind_param("s", $values['staff_id']);
+			$query->execute();
+			$staff_type = $query->get_result()->fetch_array()[0];
+
 			return Array(
 				'username'=>$values['username'],
-				'staff_type'=>$values['staff_type'],
+				'staff_type'=>$staff_type,
 				'success'=>true
 			);
 		}
@@ -174,25 +179,37 @@
 				$query->bind_param("ss", $value, $cust_id);
 				$query->execute();
 			}
-			return 1;
+			return true;
 		}
 		
 		function register_staff($staff_data)
 		{
 			$bytes = openssl_random_pseudo_bytes(32/2);
 			$staff_id = "ID".bin2hex($bytes);
+
+			if($this->exists($staff_data['username']))
+				return false;
+
 			$query = $this->conn->prepare("INSERT into staff_details(staff_id) values(?);");
 			$query->bind_param("s",$staff_id);
 			$query->execute();
 			
 			foreach($staff_data as $field => $value)
 			{
-				$query = $this->conn->prepare("UPDATE staff_details SET {$field}=? where staff_id = ?;");
-				$query->bind_param("ss",$value,$staff_id);
-				$query->execute();
+				try
+				{
+					$query = $this->conn->prepare("UPDATE staff_details SET {$field}=? where staff_id = ?;");
+					$query->bind_param("ss",$value,$staff_id);
+					$query->execute();
+				}
+				catch(Error $err)
+				{
+					//Do nothing
+				}
 			}
 			
-			$this->register($staff_data['username'], $staff_data['staff_type'], $staff_data['staff_type']);
+			$this->register($staff_id, $staff_data['username'], $staff_data['staff_type']);
+			return true;
 		}
 		
 		function customer_information($customer_id)
