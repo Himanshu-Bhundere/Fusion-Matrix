@@ -77,7 +77,7 @@
           </div>
         </div>
 
-        <!-- Id and Gender -->
+          <!-- Aadhar No and Gender -->
         <div class="horizontal-group">
           <div class="form-group left">
             <label for="aadharno" class="label-title">Aadhar Number</label>
@@ -93,70 +93,61 @@
           </div>
         </div>
 
-        <!-- Proof and Age -->
+          <!-- Check In/Out date and time -->
         <div class="horizontal-group">
           <div class="form-group left">
-            <label for="choose-file" class="label-title">Upload Aadhar Card</label>
-            <input type="file" name="aadhar_file" id="choose-file" size="80" style="margin-top: 4%;">
-          </div>
-          <div class="form-group right">
-            <label for="age" class="label-title">Age</label>
-            <input type="number" name="age" min="1" max="80"  value="1" class="form-input">
-          </div>
-        </div>
-
-        <!-- Amenities and Satying Days -->
-        <div class="horizontal-group">
-          <div class="form-group left" >
-            <label for="guest" class="label-title">No of Guests</label>
-            <input type="number" name="no_of_guests" min="1" max="80"  value="1" class="form-input">
-          </div>
-          <div class="form-group right">
-           <label class="label-title">Room Type </label>
-            <select class="form-input" id="level" >
-              <option value="Deluxe">Deluxe</option>
-              <option value="Prime">Prime</option>
-              <option value="Suite">Suite</option>
-              <option value="Standard" selected>Standard</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Profile picture and Age -->
-        <div class="horizontal-group">
-          <div class="form-group left" >
             <label for="checkin" class="label-title">Check-In</label>
-            <input type="date" name="check_in" id="checkin" class="form-input" style="width:78%;">
+            <br>
+            <input type="date" id="checkin_date">
+            <input type="time" id="checkin_time">
           </div>
           <div class="form-group right">
-            <label for="checkout" class="label-title">Check-Out</label>
-            <input type="date" name="check_out" id="checkout" class="form-input" style="width:78%;">
+            <label for="checkin" class="label-title">Check-Out</label>
+              <br>
+              <input type="date" id="checkout_date">
+              <input type="time" id="checkout_time">
           </div>
         </div>
 
-        <!-- Bio -->
-        <div class="form-group">
-          <label for="choose-file" class="label-title">Special request or requirements</label>
-          <input class="form-input" name="special_request" rows="4" cols="50" style="width: 97%; height: 195px;">
+        <!-- Room No and Type -->
+        <div class="horizontal-group">
+          <div class="form-group left">
+            <label for="roomno" class="label-title">Room no</label>
+            <input type="text" name="room_no" id="roomno" class="form-input" required="required">
+          </div>
+          <div class="form-group right">
+            <label class="label-title">Room Type</label>
+            <div>
+              <select class="form-input" id="level">
+                <option value="Deluxe">Deluxe</option>
+                <option value="Prime">Prime</option>
+                <option value="Suite">Suite</option>
+                <option value="Standard" selected>Standard</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Requirements -->
+        <div>
+          <label for="requirements" class="label-title">Special request or requirements</label>
+          <input class="form-input" name="special_request" rows="4" cols="50" style="width: 97%; height: 195px;" id="requirements">
         </div>
       </div>
-
       <!-- form-footer -->
       <div class="form-footer">
         <button type="submit" class="btn">Reserve</button>
       </div>
-	  
-    <script>
-       $(document).ready(function() {
-            $('#booking-form').submit(function() {
-                let formData = objectifyForm($(this).serializeArray());
-                registerCustomer(301, formData).then(log);   
-				console.log(formData);
-                return false; //Don't let html do anything if user submits form. We want jquery to do the work
-            });
-        });
-    </script>
-
     </form>
+    <script>
+      $(document).ready(function() {
+           $('#booking-form').submit(function() {
+               let formData = objectifyForm($(this).serializeArray());
+               registerCustomer(301, formData).then(log);   
+       console.log(formData);
+               return false; //Don't let html do anything if user submits form. We want jquery to do the work
+           });
+       });
+   </script>
   </body>
 </html>
