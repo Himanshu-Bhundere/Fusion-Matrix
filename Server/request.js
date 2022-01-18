@@ -12,13 +12,19 @@ async function registerStaff(staff_data)
 
 async function customerInformation(customer_id)
 {
-	let values = {"request_type":"customer_information", "customer_id":customer_information};
+	let values = {"request_type":"customer_information", "customer_id":customer_id};
+	return request(values);
+}
+
+async function getAllStaffInformation()
+{
+	let values = { "request_type": "get_all_staff_information" };
 	return request(values);
 }
 
 async function staffInformation(staff_id)
 {
-	let values = {"request_type":"Staff_information", "staff_id":staff_id};
+	let values = {"request_type":"staff_information", "staff_id":staff_id};
 	return request(values);
 }
 
@@ -86,7 +92,7 @@ async function request(values)
 {
 	return new Promise((resolve, reject) => {
 		$.ajax({
-				url: "http://localhost/Fusion-Matrix/Server/request.php",
+				url: "/Fusion-Matrix/Server/request.php",
 				type: "post",
 				data: values,
 				success: async function(response) {

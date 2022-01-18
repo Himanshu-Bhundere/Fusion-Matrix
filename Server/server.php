@@ -207,6 +207,12 @@
 			return $result;
 		}
 
+		function get_all_staff_information()
+		{
+			$result = $this->conn->query("SELECT * FROM staff_details");
+			return mysqli_fetch_all($result, MYSQLI_ASSOC);
+		}
+
 		function is_user_logged() { return isset($_SESSION['username']); }
 		
         //Closes connection with database

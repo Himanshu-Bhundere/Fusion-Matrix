@@ -8399,6 +8399,14 @@ div.cs-select span {
   right: 0;
 }
 
+.image{
+  transition: transform .2s;
+}
+
+.image:hover{
+  transform: scale(1.05);
+}
+
 #featured-hotel,
 #hotel-facilities,
 #testimonial,

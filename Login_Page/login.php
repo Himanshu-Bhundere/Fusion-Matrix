@@ -4,7 +4,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
-<script src = "../Server/request.js"> </script>
+<script src = "/Fusion-Matrix/Server/request.js"> </script>
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -68,6 +68,10 @@ img.avatar {
   padding: 0 16px 0 16px;
 }
 
+#loginButton:hover, .cancelbtn:hover{
+  background-color: green;
+}
+
 @media screen and (max-width: 767px) {
   .cancelbtn {
      width: 100%;
@@ -100,7 +104,7 @@ img.avatar {
 </form>
 	<script>
 	function gotoAdmin() {
-		window.location.href = "../Admin_Page/admin_page.php";
+		window.location.href = "/Fusion-Matrix/Admin_Page/admin_page.php";
 	}
 	
 	isLoggedIn().then(function(data) {
