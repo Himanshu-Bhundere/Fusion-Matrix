@@ -154,61 +154,44 @@
                   <h6>Floor-1</h6>
                 <div class="col-6 col-sm-6 col-md-2 col-lg-2">
                         <div class='container'>
-                          <div class='frame' style="float: left;">
-                            <div class='door' style="text-align: end; border-left: 3px solid saddlebrown;">1</div>
-                          </div>
-                          <div class='frame1' style="float: right;">
-                            <div class='door' style="text-align: start; border-right: 3px solid saddlebrown;">1</div>
+                          <div class='frame'>
+                            <div class='door booked'>11</div>
                           </div>
                     </div>
                 </div>
                 <div class="col-6 col-sm-6 col-md-2 col-lg-2">
                     <div class='container'>
-                        <div class='frame' style="float: left;">
-                          <div class='door' style="text-align: end; border-left: 3px solid saddlebrown;">1</div>
-                        </div>
-                        <div class='frame1' style="float: right;">
-                          <div class='door' style="text-align: start; border-right: 3px solid saddlebrown;">2</div>
+                        <div class='frame'>
+                          <div class='door available' style="z-index: 1;">12</div>
+                          <a href="/Fusion-Matrix/Admin_Page/Booking_Page/registration_form.php"><div class="booknow">Book Now</div></a>
                         </div>
                   </div>
                 </div>
                 <div class="col-6 col-sm-6 col-md-2 col-lg-2">
                     <div class='container'>
-                        <div class='frame' style="float: left;">
-                          <div class='door' style="text-align: end; border-left: 3px solid saddlebrown;">1</div>
-                        </div>
-                        <div class='frame1' style="float: right;">
-                          <div class='door' style="text-align: start; border-right: 3px solid saddlebrown;">3</div>
+                        <div class='frame'>
+                          <div class='door service'>13</div>
                         </div>
                   </div>
                 </div>
                 <div class="col-6 col-sm-6 col-md-2 col-lg-2">
                     <div class='container'>
-                        <div class='frame' style="float: left;">
-                          <div class='door' style="text-align: end; border-left: 3px solid saddlebrown;">1</div>
-                        </div>
-                        <div class='frame1' style="float: right;">
-                          <div class='door' style="text-align: start; border-right: 3px solid saddlebrown;">4</div>
+                        <div class='frame'>
+                          <div class='door available'>14</div>
                         </div>
                   </div>
                 </div>
                 <div class="col-6 col-sm-6 col-md-2 col-lg-2">
                     <div class='container'>
-                        <div class='frame' style="float: left;">
-                          <div class='door' style="text-align: end; border-left: 3px solid saddlebrown;">1</div>
-                        </div>
-                        <div class='frame1' style="float: right;">
-                          <div class='door' style="text-align: start; border-right: 3px solid saddlebrown;">5</div>
+                        <div class='frame'>
+                          <div class='door booked'>15</div>
                         </div>
                   </div>
                 </div>
                 <div class="col-6 col-sm-6 col-md-2 col-lg-2">
                     <div class='container'>
-                        <div class='frame' style="float: left;">
-                          <div class='door' style="text-align: end; border-left: 3px solid saddlebrown;">1</div>
-                        </div>
-                        <div class='frame1' style="float: right;">
-                          <div class='door' style="text-align: start; border-right: 3px solid saddlebrown;">6</div>
+                        <div class='frame'>
+                          <div class='door service'>16</div>
                         </div>
                   </div>
                 </div>
@@ -335,13 +318,8 @@
 
     $(document).ready( function () {
     $('.frame').hover( function () {
-      $(this).closest('.frame').find('.door').toggleClass('open booknow')
-    })
-});
-
-$(document).ready( function () {
-    $('.frame').hover( function () {
-      $('.frame1').closest('.frame1').find('.door').toggleClass('open-1')
+      $(this).closest('.frame').find('.door').toggleClass('open')
+      $(this).closest('.frame').find('.booknow').toggleClass('show')
     })
 });
 
