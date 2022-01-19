@@ -11,7 +11,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
     <script src = "/Fusion-Matrix/Server/request.js"> </script>
-    <script src = "/Fusion-Matrix/Server/sidebar.js"> </script>
 </head>
 <body>
     <div class="container">
@@ -62,134 +61,19 @@
             </div>
           </div>
 
-          <div class="container">
-              <div class="row">
+          <div class="container" id="rooms-container">
+            <div class="row" id="row1">
                   <h6>Floor-1</h6>
-                <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                        <div class='container'>
-                          <div class='frame'>
-                            <div class='door booked'>11</div>
-                          </div>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                    <div class='container'>
-                        <div class='frame'>
-                          <div class='door available' style="z-index: 1;">12</div>
-                          <a href="/Fusion-Matrix/Admin_Page/Booking_Page/registration_form.php"><div class="booknow">Book Now</div></a>
-                        </div>
-                  </div>
-                </div>
-                <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                    <div class='container'>
-                        <div class='frame'>
-                          <div class='door service'>13</div>
-                        </div>
-                  </div>
-                </div>
-                <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                    <div class='container'>
-                        <div class='frame'>
-                          <div class='door available'>14</div>
-                        </div>
-                  </div>
-                </div>
-                <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                    <div class='container'>
-                        <div class='frame'>
-                          <div class='door booked'>15</div>
-                        </div>
-                  </div>
-                </div>
-                <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                    <div class='container'>
-                        <div class='frame'>
-                          <div class='door service'>16</div>
-                        </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
+            </div>
+            <div class="row" id="row2">
                 <h6>Floor-2</h6>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-201
-              </div>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-202
-              </div>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-203
-              </div>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-204
-              </div>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-205
-              </div>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-206
-              </div>
             </div>
-            <div class="row">
+            <div class="row" id="row3">
                 <h6>Floor-3</h6>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-301
-              </div>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-302
-              </div>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-303
-              </div>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-304
-              </div>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-305
-              </div>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-306
-              </div>
             </div>
-            <div class="row">
+            <div class="row" id="row4">
                 <h6>Floor-4</h6>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-401
-              </div>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-402
-              </div>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-403
-              </div>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-404
-              </div>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-405
-              </div>
-              <div class="col-6 col-sm-6 col-md-2 col-lg-2">
-                  <div class="rooms"></div>
-                  Room-406
-              </div>
-            </div2
+            </div>
           </div>
 
           <script>
@@ -206,7 +90,34 @@
       document.querySelector(drop[i]).classList.toggle("show");
       document.querySelector(dropSpan[i]).classList.toggle("bi-caret-left");
     }
-    }
+              }
+
+
+              //INSERTING ROOMS INTO THE rooms-container
+              var doorHTML = `<div class='container'>
+                        <div class='frame'>
+                          <div class='door'></div>
+                          <a href="/Fusion-Matrix/Admin_Page/Booking_Page/registration_form.php"><div class="booknow"></div></a>
+                        </div>
+                </div>`;
+
+              function insertRoom(floor, roomNo, available) {
+                  let div = document.createElement('div');
+                  div.innerHTML = doorHTML.trim();
+                  div.className = "col-6 col-sm-6 col-md-2 col-lg-2";
+
+                  div.getElementsByClassName('door')[0].innerHTML = roomNo;
+                  div.getElementsByClassName('door')[0].classList.add(available ? "available" : "booked");
+                  div.getElementsByClassName('booknow')[0].innerHTML = available ? "Book Now" : "";
+
+                  getRow(floor).appendChild(div);
+              }
+
+              function getRow(floor) {
+                  return document.getElementById("row" + floor);
+              }
+
+              //Going through each room in database
 
         $(document).ready(function () {
                   $('#sidebar').load('/Fusion-Matrix/Admin_Page/sidebar.html');
@@ -232,11 +143,18 @@
 	});
 
     $(document).ready( function () {
-    $('.frame').hover( function () {
-      $(this).closest('.frame').find('.door').toggleClass('open')
-      $(this).closest('.frame').find('.booknow').toggleClass('show')
-    })
-});
+        $('#rooms-container').on({
+            'mouseenter': function () {
+                $(this).closest('.frame').find('.door').toggleClass('open')
+                $(this).closest('.frame').find('.booknow').toggleClass('show')
+            },
+            'mouseleave': function () {
+                $(this).closest('.frame').find('.door').toggleClass('open')
+                $(this).closest('.frame').find('.booknow').toggleClass('show')
+            }
+        },
+        '.frame');
+    });
 
           </script>
 </body>

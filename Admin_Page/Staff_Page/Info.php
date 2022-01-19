@@ -75,7 +75,7 @@
                   <li class="adjust js-date">01-01-2022</li>
             </ul>`;
 
-          let n = 0;
+          let numberOfStaff = 0;
 
           function insertStaff(staff_details) {
               let div = document.createElement('div');
@@ -98,18 +98,18 @@
                   insertRow();
                   getCurrentRow().appendChild(div);
               }
-              n++;
+              numberOfStaff++;
           }
 
           function insertRow() {
               let div = document.createElement('div');
               div.className = "row";
-              div.id = "row" + (Math.floor(n/3) + 1);
+              div.id = "row" + (Math.floor(numberOfStaff/3) + 1);
               document.getElementById('staff_container').appendChild(div);
           }
 
           function getCurrentRow() {
-              return document.getElementById('row' + (Math.floor(n/3) + 1)); 
+              return document.getElementById('row' + (Math.floor(numberOfStaff/3) + 1)); 
           }
 
           (async () => {
