@@ -113,7 +113,7 @@
         <div class="horizontal-group">
           <div class="form-group left">
             <label for="roomno" class="label-title">Room no</label>
-            <input type="text" name="room_no" id="roomno" class="form-input" required="required">
+            <input type="text" id="room-no" class="form-input" required="required">
           </div>
           <div class="form-group right">
             <label class="label-title">Room Type</label>
@@ -131,7 +131,7 @@
         <!-- Requirements -->
         <div>
           <label for="requirements" class="label-title">Special request or requirements</label>
-          <input class="form-input" name="special_request" rows="4" cols="50" style="width: 97%; height: 195px;" id="requirements">
+          <input class="form-input" name="special_requirements" rows="4" cols="50" style="width: 97%; height: 195px;" id="requirements">
         </div>
       </div>
       <!-- form-footer -->
@@ -143,7 +143,7 @@
       $(document).ready(function() {
            $('#booking-form').submit(function() {
                let formData = objectifyForm($(this).serializeArray());
-               registerCustomer(301, formData).then(log);   
+               registerCustomer($('#room-no').val(), formData).then(log);   
        console.log(formData);
                return false; //Don't let html do anything if user submits form. We want jquery to do the work
            });

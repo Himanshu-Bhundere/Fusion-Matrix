@@ -154,7 +154,7 @@
 		
 		function is_room_occupied($room_no)
 		{
-			$result = $this->conn->query("SELECT occupancy from rooms WHERE room_no={$room_no};");
+			$result = $this->conn->query("SELECT occupancy from rooms WHERE room_no='{$room_no}';");
 			$occupancy = $result->fetch_array()[0];
 			return $occupancy;
 		}
@@ -165,6 +165,7 @@
 			{
 				return 0;
 			}
+			
 			$cust_id = "ID".rand();
 			$query = $this->conn->prepare("UPDATE rooms SET occupancy = 1,customer_id = ? where room_no = ?;");
 			$query->bind_param("si",$cust_id,$roomno);
@@ -179,6 +180,11 @@
 				$query->bind_param("ss", $value, $cust_id);
 				$query->execute();
 			}
+			
+			/*$query = $this->conn->prepare("INSERT into rooms where room_no = ? value ?;");
+			$query->bind_param("ss", $roomno, $cust_id);
+			$query->execute();*/
+			
 			return true;
 		}
 		

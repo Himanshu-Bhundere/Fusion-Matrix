@@ -74,6 +74,9 @@
             <div class="row" id="row4">
                 <h6>Floor-4</h6>
             </div>
+			<div class="row" id="row5">
+                <h6>Floor-5</h6>
+            </div>
           </div>
 
           <script>
@@ -101,14 +104,14 @@
                         </div>
                 </div>`;
 
-              function insertRoom(floor, roomNo, available) {
+              function insertRoom(floor, roomNo, occupancy) {
                   let div = document.createElement('div');
                   div.innerHTML = doorHTML.trim();
                   div.className = "col-6 col-sm-6 col-md-2 col-lg-2";
 
                   div.getElementsByClassName('door')[0].innerHTML = roomNo;
-                  div.getElementsByClassName('door')[0].classList.add(available ? "available" : "booked");
-                  div.getElementsByClassName('booknow')[0].innerHTML = available ? "Book Now" : "";
+                  div.getElementsByClassName('door')[0].classList.add(occupancy ? "booked" : "available");
+                  div.getElementsByClassName('booknow')[0].innerHTML = occupancy ? "" : "Book Now";
 
                   getRow(floor).appendChild(div);
               }
@@ -118,6 +121,17 @@
               }
 
               //Going through each room in database
+			  (async() => { 
+				for(i=1;i<6;i++)
+				{
+					for(j=1;j<21;j++)
+					{
+						await isRoomOccupied(i*100+j).then((data) => {
+						console.log(data);
+						insertRoom(i, i*100+j, !!parseInt(data['occupancy']));});
+					}
+				}
+			  })();
 
         $(document).ready(function () {
                   $('#sidebar').load('/Fusion-Matrix/Admin_Page/sidebar.html');
