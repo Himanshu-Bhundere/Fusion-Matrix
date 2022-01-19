@@ -270,9 +270,9 @@
 		detail("There was some error with the MySQL Server. Please try again later");
 	}
 
-	function warning_handler($errno, $errstr)
+	function warning_handler($errno, $errstr, $errfile, $errline)
 	{
 		fail();
-		detail("There was a problem in the server : {$errstr}");
+		detail("There was a problem in the server : {$errstr} in file {$errfile} at line {$errline}");
 	}
 ?>

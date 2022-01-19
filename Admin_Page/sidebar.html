@@ -26,7 +26,7 @@
           <a href="#" onclick="dropdown(3)"><li><img src="/Fusion-Matrix/Admin_Page/bill.png" alt="" style="margin-left: -2%;">Billing/Booking</li><i class="bi bi-caret-down boo"></i></a>
           <ul class="booking">
           <a href="/Fusion-Matrix/Admin_Page/Booking_Page/registration_form.php"><li>Customer Registration</li></a>
-          <a href=""><li>Customer Invoice</li></a>
+          <a href="/Fusion-Matrix/Admin_Page/Booking_Page/invoice.php"><li>Customer Invoice</li></a>
           <a href=""><li>Booking Cancellation</li></a></ul>
 
           <a href="#" onclick="dropdown(4)"><li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
@@ -36,7 +36,7 @@
           <a href=""><li>Cash Inflow/Outflow</li></a>
           <a href=""><li>Financial Charts</li></a></ul>
 
-          <a href=""><li><img src="/Fusion-Matrix/Admin_Page/log out.png" onclick="logout().then(log)" alt="">Log out</li></a>
+          <a href="#" onclick="logout().then(log).then(function () { window.location.href = '/Fusion-Matrix/Login_Page/login.php' });"><li><img src="/Fusion-Matrix/Admin_Page/log out.png" alt="">Log out</li></a>
         </ul>
       </div>
       <div>

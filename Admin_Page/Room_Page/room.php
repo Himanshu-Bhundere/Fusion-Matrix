@@ -80,6 +80,10 @@
           </div>
 
           <script>
+              $.ajaxSetup({
+                  cache: false
+              })
+
               const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
       const y = new Date().getFullYear();
       let m = months[new Date().getMonth()];

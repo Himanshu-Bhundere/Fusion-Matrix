@@ -40,6 +40,10 @@
       </div>
 
       <script>
+          $.ajaxSetup({
+              cache: false
+          })
+
           var staffHTML = `<img class="js-s_profile_img" src="avatar.jpeg" alt="">
             <h5 class="mb-0 js-s_firstname" style="width:max-content;">Name</h5>
             <p class="js-staff_type">Designation</p>

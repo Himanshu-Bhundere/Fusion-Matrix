@@ -5,9 +5,10 @@
     <title>Hotel Registeration Form</title>
     <link rel="stylesheet" href="invoice.css">
 	 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+     <script src = "/Fusion-Matrix/Server/request.js"> </script>
   </head>
   <body>
-    <form class="signup-form" id="booking-form" action="/register" method="post">
+    <form class="signup-form" id="booking-form">
 
       <!-- form header -->
       <div class="form-header">
@@ -22,7 +23,7 @@
           </div>
           <div class="form-group right">
             <label for="customer_id" class="label-title">Customer-Id</label>
-            <input type="text" name="customerid" id="customer_id" class="form-input" placeholder="Last Name">
+            <input type="text" name="customer_id" id="customer_id" class="form-input" placeholder="Customer ID">
           </div>
         </div>
         <h2 style="color: #1BBA93;">Billing Details</h2>
@@ -104,4 +105,36 @@
       </div>
     </form>
   </body>
+
+    <script>
+        $(document).ready(function () {
+            $('#customer_id').keyup(function () {
+                let customer_id = $(this).val();
+                (async () => {
+                    customerInformation(customer_id).then(function (data) {
+                        console.log(data);
+                        if (data['success'] === 1) {
+                            $('#booking-form *').filter(':input').each(function () {
+                                let customer = data['customer_information'];
+                                let name = $(this).attr('name');
+                                if (customer[name] !== undefined) {
+                                    $(this).val(customer[name]);
+                                }
+                            });
+                        }
+                        else {
+                            $('#booking-form *').filter(':input').each(function () {
+                                if ($(this).attr('name') != 'customer_id')
+                                    $(this).val('');
+                            });
+                        }
+                    });
+                })();
+            });
+
+            $('#signup-form').submit(function () {
+                return false;
+            });
+        });
+    </script>
 </html>

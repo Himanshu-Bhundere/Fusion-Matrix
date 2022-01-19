@@ -220,14 +220,14 @@
 		
 		function customer_information($customer_id)
 		{
-			$result = $this->conn->query("SELECT * FROM customer_details where customer_id = {$customer_id};");
-			return $result;
+			$result = $this->conn->query("SELECT * FROM customer_details where customer_id = '{$customer_id}';");
+			return $result->fetch_assoc();
 		}
 
 		function staff_information($staff_id)
 		{
-			$result = $this->conn->query("SELECT * FROM staff_details where staff_id = {$staff_id};");
-			return $result;
+			$result = $this->conn->query("SELECT * FROM staff_details where staff_id = '{$staff_id}';");
+			return $result->fetch_assoc();
 		}
 
 		function get_all_staff_information()

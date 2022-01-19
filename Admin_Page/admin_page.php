@@ -66,6 +66,11 @@
 
 
     <script>
+        //If requests are cached and we update the sidebar.html file, it won't get updated in our website
+        $.ajaxSetup({
+            cache: false
+        })
+
       const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
       const y = new Date().getFullYear();
       let m = months[new Date().getMonth()];
