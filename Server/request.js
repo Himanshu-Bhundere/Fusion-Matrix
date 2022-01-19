@@ -92,25 +92,25 @@ async function request(values)
 {
 	return new Promise((resolve, reject) => {
 		$.ajax({
-				url: "/Fusion-Matrix/Server/request.php",
-				type: "post",
-				data: values,
-				success: async function(response) {
-					try
-					{
-						resolve(JSON.parse(response));
-					}
-					catch(err)
-					{
-						if(err.name == "SyntaxError")
-							reject("There was an error parsing the response : " + response);
-						else
-							reject(err);
-					}
-				},
-				error: async function(jqXHR, textStatus, errorThrown) {
-					console.log(textStatus, errorThrown);
+			url: "/Fusion-Matrix/Server/request.php",
+			type: "post",
+			data: values,
+			success: async function(response) {
+				try
+				{
+					resolve(JSON.parse(response));
 				}
+				catch(err)
+				{
+					if(err.name == "SyntaxError")
+						reject("There was an error parsing the response : " + response);
+					else
+						reject(err);
+				}
+			},
+			error: async function(jqXHR, textStatus, errorThrown) {
+				console.log(textStatus, errorThrown);
+			}
 		});
 	});
 }

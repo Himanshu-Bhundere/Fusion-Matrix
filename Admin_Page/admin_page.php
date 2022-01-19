@@ -54,7 +54,7 @@
           <a href="/Fusion-Matrix/Admin_Page/Staff_Page/Info.php"><li>Information/Records</li></a></ul>
 
           <a href="#" onclick="dropdown(2)"><li><img src="room.jpg" alt="">Room</li><i class="bi bi-caret-down roo"></i></a>
-          <a href="" class="room"><li>Avaliablility</li></a>
+          <a href="/Fusion-Matrix/Admin_Page/Room_Page/room.php" class="room"><li>Avaliablility</li></a>
 
           <a href="#" onclick="dropdown(3)"><li><img src="bill.png" alt="" style="margin-left: -2%;">Billing/Booking</li><i class="bi bi-caret-down boo"></i></a>
           <ul class="booking">

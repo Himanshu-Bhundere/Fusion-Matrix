@@ -129,7 +129,7 @@
       </div>
 
       <script>
-          var staffHTML = `<img src="avatar.jpeg" alt="">
+          var staffHTML = `<img class="js-s_profile_img" src="avatar.jpeg" alt="">
             <h5 class="mb-0 js-s_firstname" style="width:max-content;">Name</h5>
             <p class="js-staff_type">Designation</p>
             <hr>
@@ -171,11 +171,14 @@
               div.innerHTML = staffHTML.trim();
               div.className = "col-12 col-sm-6 col-md-4 col-lg-4 icon";
 
-              console.log(staff_details);
               for (detail in staff_details) {
                   element = div.getElementsByClassName('js-' + detail)[0];
-                  if(element != null)
+                  if (element != null) {
+                      if (element.tagName == 'IMG' && staff_details[detail] != "") {
+                          element.setAttribute('src', staff_details[detail]);
+                      }
                       element.innerHTML = staff_details[detail];
+                  }
               }
 
               if (getCurrentRow() != null)

@@ -38,7 +38,7 @@
     <div class="form-body">
           <div class="form-group left">
             <label for="firstname" class="label-title">First name </label>
-            <input type="text" id="firstname" class="form-input" name="s_firstname" placeholder="enter your first name" required="required">
+            <input type="text" id="firstname" class="form-input" name="s_firstname" placeholder="enter your first name">
           </div>
           <div class="form-group right">
             <label for="lastname" class="label-title">Last name</label>
@@ -46,20 +46,20 @@
           </div>  
         <div class="form-group left ">
           <label for="email" class="label-title">Personal Email</label>
-          <input type="email" id="email" class="form-input" name="s_email_id" placeholder="enter your email" required="required">
+          <input type="email" id="email" class="form-input" name="s_email_id" placeholder="enter your email">
         </div>
 
         <div class="form-group right">
             <label for="dob" class="label-title">Date Of Birth</label>
-            <input type="dob" id="dob" class="form-input" name="s_date_of_birth" placeholder="enter your Date Of Birth" required="required" style="width: ;">
+            <input type="dob" id="dob" class="form-input" name="s_date_of_birth" placeholder="enter your Date Of Birth" style="width: ;">
         </div>
           <div class="form-group left">
             <label for="password" class="label-title">LinkedIn Profile </label>
-            <input type="text" id="Firstname" class="form-input" placeholder="enter your linkedin ID" required="not required">
+            <input type="text" name="username" id="Firstname" class="form-input" placeholder="enter your linkedin ID">
           </div>
           <div class="form-group right">
             <label for="Description" class="label-title">Description</label>
-            <input type="text" class="form-input" id="last name" placeholder="Why the person wants to join ?" required="required">
+            <input type="text" class="form-input" id="last name" placeholder="Why the person wants to join ?">
           </div>
           <div class="form-group left">
             <label class="label-title">Gender</label>
@@ -88,25 +88,25 @@
             </div>
             <div class="form-group right">
                 <label for="Designation" class="label-title">Designation</label>
-                <input type="text" class="form-input" name="staff_type" id="last name" placeholder="Designation" required="required">
+                <input type="text" class="form-input" name="staff_type" id="last name" placeholder="Designation">
               </div>
             <div class="form-group left">
               <label for="text" class="label-title">Address Line 1 </label>
-              <input type="text" name="s_address" id="Firstname" class="form-input" placeholder="Address" required=" required">
+              <input type="text" name="s_address" id="Firstname" class="form-input" placeholder="Address"">
             </div>
             <div class="form-group right">
               <label for="Description" class="label-title">Address Line 2</label>
-              <input type="text" name="s_address" class="form-input" id="last name" placeholder="Address" required=" not required">
+              <input type="text" name="s_address" class="form-input" id="last name" placeholder="Address">
             </div>
             
             <div class="form-group left">
                 <label for="Description" class="label-title">State</label>
-                <input type="text" name="s_address" class="form-input" id="last name" placeholder="Address" required="  required">
+                <input type="text" name="s_address" class="form-input" id="last name" placeholder="Address">
             </div>
       
             <div class="form-group right">
                 <label for="Description" class="label-title">PIN Code</label>
-                <input type="text" name="s_address" class="form-input" id="last name" placeholder="Address" required=" not required">
+                <input type="text" name="s_address" class="form-input" id="last name" placeholder="Address">
             </div>
             <div class="form-group  left">
               <label for="text" class="label-title">Education</label>
@@ -117,11 +117,11 @@
           </div>
               <div class="form-group right">
                 <label for="text" class="label-title">Specialization</label>
-                <input type="text" id="Firstname" class="form-input" placeholder="Address" required=" required">
+                <input type="text" id="Firstname" class="form-input" placeholder="Address">
               </div>
               <div class="form-group left">
                 <label for="Description" class="label-title">Institute</label>
-                <input type="text" class="form-input" id="last name" placeholder="Address" required="  required">
+                <input type="text" class="form-input" id="last name" placeholder="Address">
               </div>
           <div class="form-group right">
             <label for="experience" class="label-title">Age</label>
@@ -129,7 +129,7 @@
           </div>
           <div class="form-group left">
             <label for="firstname" class="label-title">Organization </label>
-            <input type="text" name="s_organisation" id="firstname" class="form-input" placeholder="Latest Organization  name" required="required" />
+            <input type="text" name="s_organisation" id="firstname" class="form-input" placeholder="Latest Organization  name"/>
           </div>
           <div class="form-group right">
             <label for="lastname" class="label-title">Designation</label>
@@ -137,7 +137,7 @@
           </div>
           <div class="form-group left">
             <label for="firstname" class="label-title">Start Date</label>
-            <input type="text" name="s_start_date" id="firstname" class="form-input" placeholder="Starting Date of working" required="required" />
+            <input type="text" name="s_start_date" id="firstname" class="form-input" placeholder="Starting Date of working"/>
           </div>
           <div class="form-group right">
             <label for="lastname" class="label-title">End Date</label>
@@ -145,7 +145,7 @@
           </div>
               <div class="form-group left">
                 <label for="firstname" class="label-title">Starting Salary</label>
-                <input type="text" name="s_start_salary" id="firstname" class="form-input" placeholder="Enter start salary" required="required" />
+                <input type="text" name="s_start_salary" id="firstname" class="form-input" placeholder="Enter start salary"/>
               </div>
               <div class="form-group right">
                 <label for="lastname" class="label-title">End Salary</label>
@@ -153,7 +153,7 @@
               </div>
                   <div class="form-group">
                     <label for="firstname" class="label-title">Reason</label>
-                    <input type="text" name = "s_reason" id="firstname" class="form-input" placeholder="Enter Leaving Reason" required="required" />
+                    <input type="text" name = "s_reason" id="firstname" class="form-input" placeholder="Enter Leaving Reason"/>
                   </div>
 
         <div class="form-group" style="clear: both;">
@@ -169,14 +169,26 @@
 
     <!-- Script for range input label -->
     <script>
-       $(document).ready(function() {
+        $(document).ready(function () {
+            $('#choose-file').change(function () {
+                let img = document.getElementById('choose-file').files[0];
+                let imgURL = window.URL.createObjectURL(img);
+                fr = new FileReader();
+                fr.readAsDataURL(img); //NOTE: ASYNC FUNCTION
+                $('.avatar').attr('src', imgURL);
+            });
+
             $('#signup-form').submit(function() {
                 let formData = objectifyForm($(this).serializeArray());
-                registerStaff(formData).then(log);   
-				console.log(formData);
+                let img = document.getElementById('choose-file').files[0];
+                if (img != null) {
+                    formData['s_profile_img'] = fr.result; //NOTE: GETS READ FILE FROM FR, WHICH IS ASYNC
+                    console.log(fr.result);
+                }
+                registerStaff(formData).then(log); 
                 return false; //Don't let html do anything if user submits form. We want jquery to do the work
             });
-        });
+       });
     </script>
   </body>
 </html>
