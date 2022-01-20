@@ -104,7 +104,7 @@
               var doorHTML = `<div class='container'>
                         <div class='frame'>
                           <div class='door'></div>
-                          <a href="/Fusion-Matrix/Admin_Page/Booking_Page/registration_form.php"><div class="booknow"></div></a>
+                          <a href="" class="book-link"><div class="booknow"></div></a>
                         </div>
                 </div>`;
 
@@ -116,6 +116,7 @@
                   div.getElementsByClassName('door')[0].innerHTML = roomNo;
                   div.getElementsByClassName('door')[0].classList.add(occupancy ? "booked" : "available");
                   div.getElementsByClassName('booknow')[0].innerHTML = occupancy ? "" : "Book Now";
+                  div.getElementsByClassName('book-link')[0].setAttribute('href', '/Fusion-Matrix/Admin_Page/Booking_Page/registration_form.php/?room-no=' + roomNo);
 
                   getRow(floor).appendChild(div);
               }
@@ -131,7 +132,6 @@
 					for(j=1;j<21;j++)
 					{
 						await isRoomOccupied(i*100+j).then((data) => {
-						console.log(data);
 						insertRoom(i, i*100+j, !!parseInt(data['occupancy']));});
 					}
 				}
@@ -147,7 +147,6 @@
 		  var regex_department = new RegExp($('#search_department').val(), "i");
           var rows = $('table tr:gt(0)');
           rows.each(function (index) {
-            console.log("Hey")
             name = $(this).children("#name").html()
             designation = $(this).children('#designation').html();
             department = $(this).children('#department').html();

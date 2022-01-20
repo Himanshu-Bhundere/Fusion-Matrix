@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Hotel Registeration Form</title>
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="/Fusion-Matrix/Admin_Page/Booking_Page/register.css">
 	 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
     <script src = "/Fusion-Matrix/Server/request.js"> </script>
   </head>
@@ -140,7 +140,9 @@
       </div>
     </form>
     <script>
-      $(document).ready(function() {
+        $(document).ready(function () {
+           $('#room-no').val(new URLSearchParams(window.location.search).get('room-no'));
+
            $('#booking-form').submit(function() {
                let formData = objectifyForm($(this).serializeArray());
                registerCustomer($('#room-no').val(), formData).then(log);   
@@ -148,6 +150,6 @@
                return false; //Don't let html do anything if user submits form. We want jquery to do the work
            });
        });
-   </script>
+    </script>
   </body>
 </html>

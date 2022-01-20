@@ -96,24 +96,7 @@
                   }
               }
 
-              if (getCurrentRow() != null)
-                  getCurrentRow().appendChild(div);
-              else {
-                  insertRow();
-                  getCurrentRow().appendChild(div);
-              }
-              numberOfStaff++;
-          }
-
-          function insertRow() {
-              let div = document.createElement('div');
-              div.className = "row";
-              div.id = "row" + (Math.floor(numberOfStaff/3) + 1);
-              document.getElementById('staff_container').appendChild(div);
-          }
-
-          function getCurrentRow() {
-              return document.getElementById('row' + (Math.floor(numberOfStaff/3) + 1)); 
+              document.getElementById('row1').appendChild(div);
           }
 
           (async () => {
