@@ -18,9 +18,6 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-sm-1 col-md-4 col-lg-3 col-xl-2">
-      <a class="btn" id="sideMenu" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-        ☰
-      </a>
     </div>
     <div class="col-10 col-sm-12 col-md-4 col-lg-6 col-xl-8">
       <h2 style="width: max-content;">Welcome, <?php echo $_SESSION['username']; ?>!</h2>
@@ -77,14 +74,15 @@
       const d = new Date().getDate();
       document.getElementById("date").innerText = d + " " + m + " " + y;
 
-      let drop = ['.customer', '.staff', '.room', '.booking', '.ecommerce'];
-      let dropSpan = ['.cus', '.sta', '.roo', '.boo', '.eco']
-      for(let i=0;i<5;i++){
-        function dropdown(i){
-      document.querySelector(drop[i]).classList.toggle("show");
-      document.querySelector(dropSpan[i]).classList.toggle("bi-caret-left");
-    }
-    }
+    //   let drop = ['.customer', '.staff', '.room', '.booking', '.ecommerce'];
+    //   let dropSpan = ['.cus', '.sta', '.roo', '.boo', '.eco']
+    //   let dropshow = ['.customer_show', '.staff_show', '.room_show', '.booking_show', '.ecommerce_show']
+    //   for(let i=0;i<5;i++){
+    //     function dropdown(i){
+    //   document.querySelector(drop[i]).classList.toggle('show');
+    //   document.querySelector(dropSpan[i]).classList.toggle("bi-caret-left");
+    // }
+    // }
 
     $(document).ready(function () {
         $('#sidebar').load('/Fusion-Matrix/Admin_Page/sidebar.html');
