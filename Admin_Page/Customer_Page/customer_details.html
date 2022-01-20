@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="details.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+          <div class="col-12 col-sm-1 col-md-4 col-lg-3 col-xl-2">
+            <a class="btn" id="sideMenu" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+              ☰
+            </a>
+            <p style="margin-top: 7px;"><a href="/Fusion-Matrix/Admin_Page/admin_page.php">Dashboard</a>/ Customer-info</p>
+          </div>
+          <div class="col-10 col-sm-12 col-md-4 col-lg-6 col-xl-8">
+            <h2 style="width: max-content;">Staff Info</h2>
+          </div>
+          <div class="col-2 col-sm-12 col-md-4 col-lg-3 col-xl-2">
+            <p id="date" style="font-size: 1.5vw; width: max-content;"></p>
+          </div>
+        </div>
+      </div>
+
+
+<input type="search" id="search_name" placeholder="Filter by Name">
+	<input type="search" id="search_room_no" placeholder="Filter by Room No">
+	<input type="search" id="search_status" placeholder="Filter by status">
+    <table>
+        <tr>
+          <th style="width:20%"><b>Room No.</b></th>
+          <th><b>Name</b></th>
+          <th><b>Status</b></th>
+          <th><b>Phone Number</b></th>
+          
+        </tr>
+        
+        <tr>
+          <td id="room_no">11</td>
+          <td id="name">Hitesh</td>
+          <td id="status">Check in</td>
+          <td >3445467378</td>
+        </tr>
+        
+        <tr>
+          <td id="room_no">12</td>
+          <td id="name">Hitesh</td>
+          <td id="status"> Check in</td>
+          <td >3445467378</td>
+        </tr>
+        
+        <tr>
+          <td id="room_no">13</td>
+          <td id="name">Jinish</td>
+          <td id="status">Check in</td>
+          <td >3445467378</td>
+        </tr>
+        
+        <tr>
+          <td id="room_no">14</td>
+          <td id="name">Jinish</td>
+          <td id="status"> Check in</td>
+          <td >3445467378</td>
+        </tr>
+        
+        <tr>
+          <td id="room_no">15</td>
+          <td id="name">Himanshu</td>
+          <td id="status"> Check out</td>
+          <td >3445467378</td>
+        </tr>
+        
+        <tr>
+          <td id="room_no">16</td>
+          <td id="name">Himanshu</td>
+          <td id="status"> Check out</td>
+          <td >3445467378</td>
+        </tr>
+        
+        <tr>
+          <td id="room_no">17</td>
+          <td id="name">Himanshu</td>
+          <td id="status"> Check out</td>
+          <td >7895434854</td>
+        </tr>
+        
+        <tr>
+          <td id="room_no">18</td>
+          <td id="name">ATP</td>
+          <td id="status"> Check out</td>
+          <td >7895434854</td>
+        </tr>
+        
+        <tr>
+          <td id="room_no">19</td>
+          <td id="name">ATP</td>
+          <td id="status"> Check out</td>
+          <td >7895434854</td>
+        </tr>
+        
+        <tr>
+          <td id="room_no">20</td>
+          <td id="name">ATP</td>
+          <td id="status">Check out</td>
+          <td >7895434854</td>
+        </tr>
+      </table>
+<script>
+  $(document).ready(function() {
+    // Quick Table Search
+        $('#search_name, #search_room_no, #search_status').keyup(function() {
+          var regex_name = new RegExp($('#search_name').val(), "i");
+		  var regex_room_no = new RegExp($('#search_room_no').val(), "i");
+		  var regex_status = new RegExp($('#search_status').val(), "i");
+          var rows = $('table tr:gt(0)');
+          rows.each(function (index) {
+            console.log("Hey")
+            name = $(this).children("#name").html()
+			room_no = $(this).children('#room_no').html();
+			status = $(this).children('#status').html();
+            if (name.search(regex_name) != -1 && room_no.search(regex_room_no) != -1 && status.search(regex_status) != -1) {
+              $(this).show();
+            } else {
+              $(this).hide();
+            }
+          });
+        });
+	});
+</script>
+</body>
+</html>
